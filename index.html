@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png.png">
+    <title>Sri Ramesh Krishna - Vedic Astrologer | Traditional Astrology Consultation</title>
+    <meta name="description"
+        content="Traditional Vedic Astrology consultation with Sri Ramesh Krishna. 15+ years experience in horoscope reading, Kundli matching, Muhurtham calculations and spiritual guidance.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #8B1A1A;
+            --indigo: #5C0F0F;
+            --gold: #E87B35;
+            --olive: #A0522D;
+            --cosmic-blue: #D2691E;
+            --cosmic-purple: #CD853F;
+            --muted-grey: #8B7355;
+            --light-grey: #FFF8F0;
+            --text-dark: #2C1810;
+            --text-light: #ffffff;
+            --error-red: #dc3545;
+            --success-green: #28a745;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-grey);
+            overflow-x: hidden;
+        }
+
+        /* HEADER SECTION */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%);
+            color: var(--text-light);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 30px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 5px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-link.active {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(232, 123, 53, 0.3);
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-title h1 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title p {
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--gold);
+            color: var(--text-light);
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 40px;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* PAGE SECTIONS */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(26, 45, 77, 0.05), rgba(45, 27, 78, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-left {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left h2 {
+            font-size: 48px;
+            color: var(--navy);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero-left p {
+            font-size: 18px;
+            color: var(--muted-grey);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .tag-pill {
+            background: linear-gradient(135deg, var(--cosmic-blue), var(--cosmic-purple));
+            color: var(--text-light);
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(74, 111, 165, 0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--navy), var(--indigo));
+            color: var(--text-light);
+            box-shadow: 0 6px 15px rgba(26, 45, 77, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 45, 77, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--text-light);
+        }
+
+        .hero-right {
+            position: relative;
+            z-index: 1;
+        }
+
+        .astrologer-card {
+            background: var(--text-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .astrologer-photo {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--cosmic-blue), var(--cosmic-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .astrologer-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .astrologer-badge {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--navy), var(--indigo));
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .astrologer-badge p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* ASTROLOGY BANNER */
+        .astrology-banner {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--cosmic-blue), var(--cosmic-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .astrology-banner::before {
+            content: '✦ ★ ✦';
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* PHOTO GALLERY SLIDER */
+        .photo-gallery-section {
+            padding: 60px 40px;
+            background: var(--light-grey);
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--navy);
+        }
+
+        .photo-gallery-slider {
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-container {
+            display: flex;
+            animation: slideInfinite 30s linear infinite;
+        }
+
+        .gallery-container:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes slideInfinite {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .gallery-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            flex-shrink: 0;
+            background: transparent;
+        }
+
+        .gallery-item img {
+            width: 200px;
+            height: 300px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            padding: 80px 40px;
+            background: var(--text-light);
+        }
+
+        .about-left h2 {
+            font-size: 36px;
+            color: var(--navy);
+            margin-bottom: 25px;
+        }
+
+        .about-left p {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .qualifications {
+            margin-top: 25px;
+        }
+
+        .qualifications h3 {
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .qualification-item {
+            background: linear-gradient(135deg, var(--cosmic-blue), var(--cosmic-purple));
+            color: var(--text-light);
+            padding: 12px 18px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 4px 10px rgba(74, 111, 165, 0.2);
+        }
+
+        .about-right {
+            background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05));
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .about-right h3 {
+            font-size: 20px;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .award-pill {
+            background: linear-gradient(135deg, var(--indigo), var(--cosmic-purple));
+            color: var(--text-light);
+            padding: 12px 18px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            box-shadow: 0 4px 10px rgba(45, 27, 78, 0.2);
+            display: block;
+        }
+
+        .award-note {
+            font-size: 12px;
+            color: var(--muted-grey);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* TESTIMONIALS SECTION */
+        .testimonials {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(26, 45, 77, 0.05), rgba(45, 27, 78, 0.05));
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .testimonials-header h2 {
+            font-size: 36px;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .testimonials-header p {
+            font-size: 16px;
+            color: var(--muted-grey);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--text-light);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-star {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 14px;
+        }
+
+        .testimonials-cta {
+            text-align: center;
+        }
+
+        .testimonials-cta a {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, var(--navy), var(--indigo));
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(26, 45, 77, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .testimonials-cta a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 45, 77, 0.4);
+        }
+
+        /* BOOKING SECTION */
+        .booking {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            padding: 80px 40px;
+            background: var(--text-light);
+        }
+
+        .booking-left h2 {
+            font-size: 36px;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .booking-info {
+            background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .booking-info h3 {
+            font-size: 16px;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .booking-info p {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .booking-note {
+            font-size: 13px;
+            color: var(--muted-grey);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .booking-form {
+            background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05));
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--cosmic-blue);
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .radio-group input[type="radio"] {
+            width: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-note {
+            font-size: 12px;
+            color: var(--muted-grey);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .error-message {
+            color: var(--error-red);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--navy), var(--indigo));
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(26, 45, 77, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 45, 77, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%);
+            color: var(--text-light);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .contact-city {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .contact-city-name {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .contact-note {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background: #1fb855;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, rgba(26, 45, 77, 0.9), rgba(45, 27, 78, 0.9));
+            color: var(--text-light);
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid var(--gold);
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        footer .year {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 12px 20px;
+            }
+
+            .header-left {
+                flex-direction: row;
+                gap: 12px;
+            }
+
+            .header-title h1 {
+                font-size: 16px;
+            }
+
+            .header-title p {
+                font-size: 10px;
+            }
+
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .main-nav.mobile-open {
+                display: flex;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 12px 16px;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .language-selector {
+                gap: 5px;
+            }
+
+            .lang-btn {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .hero-left h2 {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .booking {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-gallery-section {
+                padding: 40px 20px;
+            }
+
+            .contact {
+                padding: 40px 20px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="LOGO.png" alt="Nandi Symbol">
+            </div>
+            <div class="header-title">
+                <h1 data-i18n="header_title"> Sri Ramesh Krishna</h1>
+                <p data-i18n="header_subtitle">Traditional Vedic Astrology &amp; Divine Guidance</p>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="#home" class="nav-link active" data-i18n="nav_home" onclick="navigateTo('home', event)">Home</a>
+            <a href="#about" class="nav-link" data-i18n="nav_about" onclick="navigateTo('about', event)">About</a>
+            <a href="#services" class="nav-link" data-i18n="nav_services"
+                onclick="navigateTo('services', event)">Services</a>
+            <a href="#horoscopes" class="nav-link" data-i18n="nav_horoscopes"
+                onclick="navigateTo('horoscopes', event)">Horoscopes</a>
+            <a href="#birthchart" class="nav-link" data-i18n="nav_birthchart"
+                onclick="navigateTo('birthchart', event)">Book Now!</a>
+            <a href="#testimonials" class="nav-link" data-i18n="nav_testimonials"
+                onclick="navigateTo('testimonials', event)">Testimonials</a>
+            <a href="#gallery" class="nav-link" data-i18n="nav_gallery"
+                onclick="navigateTo('gallery', event)">Gallery</a>
+            <a href="#contact" class="nav-link" data-i18n="nav_contact"
+                onclick="navigateTo('contact', event)">Contact</a>
+        </nav>
+        <div class="language-selector">
+            <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('ta')">த</button>
+            <button class="lang-btn" onclick="setLanguage('kn')">ಕ</button>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page-section active">
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-left">
+                <h2 data-i18n="hero_heading">Seek Divine Guidance with Sri Ramesh Krishna</h2>
+                <p data-i18n="hero_subheading">Traditional South Indian Vedic Astrology rooted in ancient wisdom. Gain
+                    clarity on life's path through authentic astrological guidance and spiritual counselling.</p>
+                <div class="hero-tags">
+                    <span class="tag-pill" data-i18n="tag_experience">30+ Years Combined Experience</span>
+                    <span class="tag-pill" data-i18n="tag_languages">Tamil • Kannada</span>
+                    <span class="tag-pill" data-i18n="tag_consultations">Personal Consultations</span>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="navigateTo('birthchart', event)" data-i18n="btn_book">Book
+                        Traditional Consultation</button>
+                    <button class="btn btn-secondary" onclick="navigateTo('about', event)"
+                        data-i18n="btn_profile">Astrologer Profile &amp; Honours</button>
+                    <button class="btn btn-secondary" onclick="navigateTo('testimonials', event)"
+                        data-i18n="btn_experiences">Devotee Experiences</button>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="astrologer-card">
+                    <div class="astrologer-photo">
+                        <img src="09.png" alt="Astrologer Sri Ramesh Krishna" loading="lazy">
+                    </div>
+                    <div class="astrologer-badge">
+                        <p data-i18n="astrologer_badge">Honoured for Service in Vedic Astrology</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASTROLOGY BANNER -->
+        <section class="astrology-banner">
+            <p data-i18n="banner_text">Illuminate Your Path with Cosmic Wisdom</p>
+        </section>
+
+        <!-- SERVICES PREVIEW ON HOME -->
+        <section style="padding: 60px 40px; background: var(--text-light);">
+            <h2 style="text-align: center; font-size: 32px; color: var(--navy); margin-bottom: 15px;"
+                data-i18n="home_services_heading">Our Sacred Services</h2>
+            <p style="text-align: center; font-size: 16px; color: var(--muted-grey); margin-bottom: 40px;"
+                data-i18n="home_services_intro">Comprehensive astrological guidance rooted in ancient Vedic wisdom</p>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;">
+                <div
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(232, 123, 53, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--gold); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="home_service_1">📊
+                        Complete Horoscope Reading</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="home_service_1_desc">In-depth birth chart analysis with career, marriage, health and
+                        finance predictions</p>
+                </div>
+                <div
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(232, 123, 53, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-blue); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="home_service_2">💑
+                        Kundli Matching</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="home_service_2_desc">Traditional compatibility analysis using Ashtakoot system for
+                        marriage</p>
+                </div>
+                <div
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(232, 123, 53, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-purple); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="home_service_3">🕉️
+                        Muhurtham & Remedies</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="home_service_3_desc">Auspicious timing selection and powerful pariharam for planetary
+                        blessings</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY CHOOSE US -->
+        <section
+            style="padding: 60px 40px; background: linear-gradient(135deg, rgba(139, 26, 26, 0.05), rgba(92, 15, 15, 0.05));">
+            <h2 style="text-align: center; font-size: 32px; color: var(--navy); margin-bottom: 40px;"
+                data-i18n="home_why_heading">Why Choose Sri Ramesh Krishna</h2>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                <div
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🎓</div>
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="home_why_1">30+
+                        Years Lineage</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7;" data-i18n="home_why_1_desc">
+                        Generational expertise in traditional Vedic astrology</p>
+                </div>
+                <div
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🗣️</div>
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="home_why_2">
+                        Multilingual Support</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7;" data-i18n="home_why_2_desc">
+                        Consultations in English, Tamil, and Kannada</p>
+                </div>
+                <div
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+                    <div style="font-size: 40px; margin-bottom: 15px;">✨</div>
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="home_why_3">
+                        Authentic Guidance</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7;" data-i18n="home_why_3_desc">
+                        Compassionate readings rooted in dharmic principles</p>
+                </div>
+                <div
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🙏</div>
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="home_why_4">
+                        Personal Care</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7;" data-i18n="home_why_4_desc">
+                        Dedicated one-on-one consultations tailored to you</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS PREVIEW -->
+        <section style="padding: 60px 40px; background: var(--text-light);">
+            <h2 style="text-align: center; font-size: 32px; color: var(--navy); margin-bottom: 15px;"
+                data-i18n="home_testimonials_heading">What Our Devotees Say</h2>
+            <p style="text-align: center; font-size: 16px; color: var(--muted-grey); margin-bottom: 40px;"
+                data-i18n="home_testimonials_intro">Hear from families who found clarity and peace</p>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto 30px;">
+                <div
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(232, 123, 53, 0.05)); padding: 25px; border-radius: 12px; border-top: 3px solid var(--gold);">
+                    <div style="color: var(--gold); font-size: 16px; margin-bottom: 10px;">★★★★★</div>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7; margin-bottom: 15px; font-style: italic;"
+                        data-i18n="home_testimonial_1">"Sri Ramesh Krishna's guidance brought harmony to my family. His
+                        accurate readings and remedies truly work!"</p>
+                    <p style="font-size: 13px; color: var(--navy); font-weight: 600;"
+                        data-i18n="home_testimonial_1_author">— Meera S., Bangalore</p>
+                </div>
+                <div
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(232, 123, 53, 0.05)); padding: 25px; border-radius: 12px; border-top: 3px solid var(--cosmic-blue);">
+                    <div style="color: var(--gold); font-size: 16px; margin-bottom: 10px;">★★★★★</div>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7; margin-bottom: 15px; font-style: italic;"
+                        data-i18n="home_testimonial_2">"His Vedic knowledge combined with compassionate approach helped
+                        me understand my life's purpose."</p>
+                    <p style="font-size: 13px; color: var(--navy); font-weight: 600;"
+                        data-i18n="home_testimonial_2_author">— Rajesh K., Chennai</p>
+                </div>
+                <div
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(232, 123, 53, 0.05)); padding: 25px; border-radius: 12px; border-top: 3px solid var(--cosmic-purple);">
+                    <div style="color: var(--gold); font-size: 16px; margin-bottom: 10px;">★★★★★</div>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.7; margin-bottom: 15px; font-style: italic;"
+                        data-i18n="home_testimonial_3">"The Kundli guidance for my daughter's marriage was insightful
+                        and authentic. Highly recommended!"</p>
+                    <p style="font-size: 13px; color: var(--navy); font-weight: 600;"
+                        data-i18n="home_testimonial_3_author">— Lakshmi I., Mysore</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="#testimonials" onclick="navigateTo('testimonials', event)"
+                    style="display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, var(--navy), var(--indigo)); color: var(--text-light); text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(139, 26, 26, 0.3); transition: all 0.3s ease;"
+                    data-i18n="home_view_all_testimonials">View All Testimonials</a>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section
+            style="padding: 60px 40px; background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%); color: var(--text-light); text-align: center;">
+            <h2 style="font-size: 32px; margin-bottom: 15px;" data-i18n="home_cta_heading">Ready to Seek Divine
+                Guidance?</h2>
+            <p style="font-size: 16px; margin-bottom: 30px; color: rgba(255, 255, 255, 0.9);" data-i18n="home_cta_text">
+                Book your consultation today and illuminate your path with ancient Vedic wisdom</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#birthchart" onclick="navigateTo('birthchart', event)"
+                    style="display: inline-block; padding: 14px 32px; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 8px; font-size: 15px; font-weight: 600; box-shadow: 0 4px 12px rgba(232, 123, 53, 0.4); transition: all 0.3s ease;"
+                    data-i18n="home_cta_book">Book Consultation</a>
+                <a href="https://wa.me/919663406667" target="_blank" rel="noopener noreferrer"
+                    style="display: inline-block; padding: 14px 32px; background: #25D366; color: white; text-decoration: none; border-radius: 8px; font-size: 15px; font-weight: 600; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); transition: all 0.3s ease;"
+                    data-i18n="home_cta_whatsapp">Chat on WhatsApp</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page-section">
+        <section class="photo-gallery-section">
+            <h2 class="gallery-title" data-i18n="gallery_title">Sri Ramesh Krishna Through the Years</h2>
+            <div class="photo-gallery-slider">
+                <div class="gallery-container">
+                    <div class="gallery-item"><img src="ast/1.png" alt="Photo 1" </div>
+                        <div class="gallery-item"><img src="ast/2.png" alt="Photo 2" </div>
+                            <div class="gallery-item"><img src="ast/3.png" alt="Photo 3" </div>
+                                <div class="gallery-item"><img src="ast/4.png" alt="Photo 4" </div>
+                                    <div class="gallery-item"><img src="ast/5.png" alt="Photo 5" </div>
+                                        <div class="gallery-item"><img src="ast/6.png" alt="Photo 6" </div>
+                                            <div class="gallery-item"><img src="ast/7.png" alt="Photo 7" </div>
+                                                <div class="gallery-item"><img src="ast/8.png" alt="Photo 8" </div>
+                                                    <div class="gallery-item"><img src="ast/9.png" alt="Photo 9" </div>
+
+                                                        <!-- Duplicate for seamless loop -->
+                                                        <div class="gallery-item"><img src="ast/1.png" alt="Photo 1"
+                                                                </div>
+                                                            <div class="gallery-item"><img src="ast/2.png" alt="Photo 2"
+                                                                    </div>
+                                                                <div class="gallery-item"><img src="ast/3.png"
+                                                                        alt="Photo 3" </div>
+                                                                    <div class="gallery-item"><img src="ast/4.png"
+                                                                            alt="Photo 4" </div>
+                                                                        <div class="gallery-item"><img src="ast/5.png"
+                                                                                alt="Photo 5" </div>
+                                                                            <div class="gallery-item"><img
+                                                                                    src="ast/6.png" alt="Photo 6" </div>
+                                                                                <div class="gallery-item"><img
+                                                                                        src="ast/7.png" alt="Photo 7"
+                                                                                        </div>
+                                                                                    <div class="gallery-item"><img
+                                                                                            src="ast/8.png"
+                                                                                            alt="Photo 8" </div>
+                                                                                        <div class="gallery-item"><img
+                                                                                                src="ast/9.png"
+                                                                                                alt="Photo 9" </div>
+                                                                                        </div>
+                                                                                    </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="about">
+            <div class="about-left">
+                <h2 data-i18n="about_heading">About Sri Ramesh Krishna</h2>
+                <p data-i18n="about_paragraph_1">With over 30 years of combined family lineage in traditional Vedic
+                    Astrology, Sri Ramesh Krishna brings ancient wisdom to modern seekers. Trained in the lineage of
+                    Gurukula astrology, he combines classical methodologies with compassionate guidance to illuminate
+                    the divine path of his devotees.</p>
+                <p data-i18n="about_paragraph_2">His expertise spans horoscope analysis, Kundli matching guidance,
+                    Muhurtham calculations, and Prashna consultations. Each session is tailored to address your unique
+                    spiritual needs, offering pariharam (remedial measures) and dharmic guidance rooted in Tamil Nadu's
+                    traditional practices.</p>
+                <p data-i18n="about_paragraph_3">Sri Ramesh Krishna believes astrology is not mere prediction, but a
+                    tool for self-awareness and spiritual evolution. He has helped hundreds of families find clarity,
+                    harmony, and divine blessings through authentic astrological consultation.</p>
+                <div class="qualifications">
+                    <h3 data-i18n="qualifications_heading">Qualifications &amp; Expertise</h3>
+                    <div>
+                        <span class="qualification-item" data-i18n="qual_guru">Gurukula Training in Vedic
+                            Astrology</span>
+                        <span class="qualification-item" data-i18n="qual_horoscope">Horoscope Analysis &amp; Kundli
+                            Reading</span>
+                        <span class="qualification-item" data-i18n="qual_muhurtham">Muhurtham Calculations</span>
+                        <span class="qualification-item" data-i18n="qual_prashna">Prashna Consultation</span>
+                        <span class="qualification-item" data-i18n="qual_pariharam">Pariharam &amp; Remedial
+                            Measures</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-right">
+                <h3 data-i18n="honours_heading">Honours &amp; Recognition</h3>
+                <span class="award-pill" data-i18n="award_1">Recognition for Spiritual Guidance (2023)</span>
+                <span class="award-pill" data-i18n="award_2">Vedic Astrology Excellence Award (2022)</span>
+                <span class="award-pill" data-i18n="award_3">Community Service in Dharmic Arts (2021)</span>
+                <span class="award-pill" data-i18n="award_4">Traditional Knowledge Keeper (2020)</span>
+                <p class="award-note" data-i18n="award_upload_note">Note: Awards certificates can be uploaded and
+                    displayed here</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" class="page-section">
+        <section class="services-page" style="padding: 80px 40px; background: var(--light-grey);">
+            <h2 style="text-align: center; font-size: 36px; color: var(--navy); margin-bottom: 50px;"
+                data-i18n="services_heading">Our Services</h2>
+            <div class="services-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                <div class="service-card"
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--gold); text-align: center;">
+                    <h3 style="font-size: 20px; color: var(--navy); margin-bottom: 15px;" data-i18n="service_1_title">
+                        Horoscope Reading</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.8;" data-i18n="service_1_desc">
+                        Complete analysis of your birth chart with detailed predictions for all life aspects including
+                        career, marriage, health, and finances.</p>
+                </div>
+                <div class="service-card"
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--cosmic-blue); text-align: center;">
+                    <h3 style="font-size: 20px; color: var(--navy); margin-bottom: 15px;" data-i18n="service_2_title">
+                        Kundli Matching</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.8;" data-i18n="service_2_desc">
+                        Traditional compatibility analysis for marriage prospects based on Vedic astrology principles
+                        and Ashtakoot matching system.</p>
+                </div>
+                <div class="service-card"
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--cosmic-purple); text-align: center;">
+                    <h3 style="font-size: 20px; color: var(--navy); margin-bottom: 15px;" data-i18n="service_3_title">
+                        Muhurtham Calculation</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.8;" data-i18n="service_3_desc">
+                        Auspicious timing selection for important life events like marriage, business launch,
+                        housewarming, and religious ceremonies.</p>
+                </div>
+                <div class="service-card"
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--olive); text-align: center;">
+                    <h3 style="font-size: 20px; color: var(--navy); margin-bottom: 15px;" data-i18n="service_4_title">
+                        Prashna Consultation</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.8;" data-i18n="service_4_desc">
+                        Immediate answers to specific questions using horary astrology techniques based on the exact
+                        time of your inquiry.</p>
+                </div>
+                <div class="service-card"
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--gold); text-align: center;">
+                    <h3 style="font-size: 20px; color: var(--navy); margin-bottom: 15px;" data-i18n="service_5_title">
+                        Pariharam & Remedies</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.8;" data-i18n="service_5_desc">
+                        Powerful remedial measures including mantra chanting, gemstone recommendations, and ritual
+                        guidance to overcome planetary afflictions.</p>
+                </div>
+                <div class="service-card"
+                    style="background: var(--text-light); padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--cosmic-blue); text-align: center;">
+                    <h3 style="font-size: 20px; color: var(--navy); margin-bottom: 15px;" data-i18n="service_6_title">
+                        Spiritual Guidance</h3>
+                    <p style="font-size: 14px; color: var(--text-dark); line-height: 1.8;" data-i18n="service_6_desc">
+                        Dharmic counseling and spiritual direction to align your life path with cosmic energies and
+                        achieve inner peace.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- HOROSCOPES PAGE -->
+    <div id="horoscopes" class="page-section">
+        <section class="horoscopes-page" style="padding: 80px 40px; background: var(--text-light);">
+            <h2 style="text-align: center; font-size: 36px; color: var(--navy); margin-bottom: 20px;"
+                data-i18n="horoscopes_heading">Daily Horoscopes</h2>
+            <p style="text-align: center; font-size: 16px; color: var(--muted-grey); margin-bottom: 50px;"
+                data-i18n="horoscopes_intro">Check your daily astrological predictions based on your zodiac sign</p>
+            <div class="zodiac-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto;">
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--gold); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_aries">♈
+                        Aries (Mesha)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_aries_desc">Mar 21 - Apr 19</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-blue); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_taurus">♉
+                        Taurus (Vrishabha)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_taurus_desc">Apr 20 - May 20</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-purple); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_gemini">♊
+                        Gemini (Mithuna)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_gemini_desc">May 21 - Jun 20</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--olive); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_cancer">♋
+                        Cancer (Karka)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_cancer_desc">Jun 21 - Jul 22</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--gold); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_leo">♌ Leo
+                        (Simha)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;" data-i18n="zodiac_leo_desc">
+                        Jul 23 - Aug 22</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-blue); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_virgo">♍
+                        Virgo (Kanya)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_virgo_desc">Aug 23 - Sep 22</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-purple); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_libra">♎
+                        Libra (Tula)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_libra_desc">Sep 23 - Oct 22</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--olive); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_scorpio">♏
+                        Scorpio (Vrishchika)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_scorpio_desc">Oct 23 - Nov 21</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--gold); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;"
+                        data-i18n="zodiac_sagittarius">♐ Sagittarius (Dhanu)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_sagittarius_desc">Nov 22 - Dec 21</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-blue); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_capricorn">♑
+                        Capricorn (Makara)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_capricorn_desc">Dec 22 - Jan 19</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--cosmic-purple); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_aquarius">♒
+                        Aquarius (Kumbha)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_aquarius_desc">Jan 20 - Feb 18</p>
+                </div>
+                <div class="zodiac-card"
+                    style="background: linear-gradient(135deg, var(--light-grey), rgba(212, 175, 55, 0.05)); padding: 25px; border-radius: 12px; border-left: 4px solid var(--olive); transition: all 0.3s ease; cursor: pointer;">
+                    <h3 style="font-size: 18px; color: var(--navy); margin-bottom: 10px;" data-i18n="zodiac_pisces">♓
+                        Pisces (Meena)</h3>
+                    <p style="font-size: 13px; color: var(--text-dark); line-height: 1.7;"
+                        data-i18n="zodiac_pisces_desc">Feb 19 - Mar 20</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- BIRTH CHART PAGE -->
+    <div id="birthchart" class="page-section">
+        <section class="booking" id="booking">
+            <div class="booking-left">
+                <h2 data-i18n="booking_heading">Book a Consultation</h2>
+                <div class="booking-info">
+                    <h3 data-i18n="booking_timing_heading">Consultation Availability</h3>
+                    <p data-i18n="booking_timing">Monday to Friday — 9:00 AM to 6:00 PM<br>Visit anytime on your booked
+                        date</p>
+                </div>
+                <p style="font-size: 16px; color: var(--text-dark); line-height: 1.8;" data-i18n="booking_description">
+                    Share your details through this form. Upon submission, you'll receive a WhatsApp message to confirm
+                    your booking with Sri Ramesh Krishna.</p>
+            </div>
+            <div class="booking-right">
+                <form class="booking-form" id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                    <div class="form-group">
+                        <label data-i18n="form_name">Full Name <span style="color: var(--error-red);">*</span></label>
+                        <input type="text" id="fullName" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="form_gender">Gender <span style="color: var(--error-red);">*</span></label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="gender" value="Male" required aria-required="true">
+                                <span data-i18n="gender_male">Male</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="Female">
+                                <span data-i18n="gender_female">Female</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="Others">
+                                <span data-i18n="gender_others">Others</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="form_city">Your City <span style="color: var(--error-red);">*</span></label>
+                        <input type="text" id="city" required aria-required="true">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-i18n="form_dob">Date of Birth (DD/MM/YYYY) <span
+                                    style="color: var(--error-red);">*</span></label>
+                            <input type="date" id="dob" required aria-required="true" aria-describedby="dobError"
+                                min="1925-01-01" max="2025-12-31">
+                            <div class="error-message" id="dobError">Please select a valid date</div>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_tob">Time of Birth <span
+                                    style="color: var(--error-red);">*</span></label>
+                            <input type="time" id="tob" required aria-required="true">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="form_cons_date">Preferred Consultation Date (DD/MM/YYYY) <span
+                                style="color: var(--error-red);">*</span></label>
+                        <input type="date" id="consultationDate" required aria-required="true"
+                            aria-describedby="consDateError" min="2025-01-01" max="2026-12-31">
+                        <div class="error-message" id="consDateError">Please select a valid consultation date</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="form_cons_type">Type of Consultation (Optional)</label>
+                        <textarea id="consultationType" rows="3"
+                            placeholder="e.g., Horoscope reading, Career guidance, Marriage consultation..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="form_whatsapp">Your WhatsApp Number <span
+                                style="color: var(--error-red);">*</span></label>
+                        <input type="tel" id="whatsappNumber" placeholder="+91..." required aria-required="true"
+                            aria-describedby="whatsappError">
+                        <div class="error-message" id="whatsappError">Please enter a valid WhatsApp number</div>
+                    </div>
+
+                    <p class="form-note" data-i18n="booking_form_note">Note: Kundli / horoscope matching is not done as
+                        part of this booking.</p>
+
+                    <button type="submit" class="submit-btn" data-i18n="btn_submit">Submit &amp; Book via
+                        WhatsApp</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- TESTIMONIALS PAGE -->
+    <div id="testimonials" class="page-section">
+        <section class="testimonials">
+            <div class="testimonials-header">
+                <h2 data-i18n="testimonials_heading">Devotee Experiences</h2>
+                <p data-i18n="testimonials_intro">Hear from families whose lives have been touched by divine guidance
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-star">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="testimonial_1_text">Sri Ramesh Krishna's guidance has been
+                        transformative. His accurate readings brought clarity to my marriage concerns, and the remedies
+                        suggested have created harmony in my family.</p>
+                    <div class="testimonial-author" data-i18n="testimonial_1_author">— Meera Sharma, Bangalore</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-star">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="testimonial_2_text">I was hesitant about astrology until I
+                        met Sri Ramesh Krishna. His compassionate approach and spiritual wisdom helped me understand my
+                        life's purpose. Highly recommended!</p>
+                    <div class="testimonial-author" data-i18n="testimonial_2_author">— Rajesh Kumar, Chennai</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-star">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="testimonial_3_text">The Kundli guidance for my daughter's
+                        marriage was insightful and authentic. Sri Ramesh Krishna's Vedic knowledge combined with modern
+                        wisdom makes him truly unique.</p>
+                    <div class="testimonial-author" data-i18n="testimonial_3_author">— Lakshmi Iyer, Mysore</div>
+                </div>
+            </div>
+            <div class="testimonials-cta">
+                <a href="#birthchart" onclick="navigateTo('birthchart', event)" data-i18n="btn_book">Book Your
+                    Consultation</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" class="page-section">
+        <!-- PHOTO GALLERY SLIDER -->
+        <section class="photo-gallery-section">
+            <h2 class="gallery-title" data-i18n="gallery_title">Sri Ramesh Krishna Through the Years</h2>
+            <div class="photo-gallery-slider">
+                <div class="gallery-container">
+                    <div class="gallery-item"><img src="ast/1.png" alt="Photo 1"></div>
+                    <div class="gallery-item"><img src="ast/2.png" alt="Photo 2"></div>
+                    <div class="gallery-item"><img src="ast/3.png" alt="Photo 3"></div>
+                    <div class="gallery-item"><img src="ast/4.png" alt="Photo 4"></div>
+                    <div class="gallery-item"><img src="ast/5.png" alt="Photo 5"></div>
+                    <div class="gallery-item"><img src="ast/6.png" alt="Photo 6"></div>
+                    <div class="gallery-item"><img src="ast/7.png" alt="Photo 7"></div>
+                    <div class="gallery-item"><img src="ast/8.png" alt="Photo 8"></div>
+                    <div class="gallery-item"><img src="ast/9.png" alt="Photo 9"></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="gallery-item"><img src="ast/1.png" alt="Photo 1"></div>
+                    <div class="gallery-item"><img src="ast/2.png" alt="Photo 2"></div>
+                    <div class="gallery-item"><img src="ast/3.png" alt="Photo 3"></div>
+                    <div class="gallery-item"><img src="ast/4.png" alt="Photo 4"></div>
+                    <div class="gallery-item"><img src="ast/5.png" alt="Photo 5"></div>
+                    <div class="gallery-item"><img src="ast/6.png" alt="Photo 6"></div>
+                    <div class="gallery-item"><img src="ast/7.png" alt="Photo 7"></div>
+                    <div class="gallery-item"><img src="ast/8.png" alt="Photo 8"></div>
+                    <div class="gallery-item"><img src="ast/9.png" alt="Photo 9"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page-section">
+        <!-- CONTACT SECTION -->
+        <section class="contact">
+            <h2 data-i18n="contact_heading">Get In Touch</h2>
+            <p data-i18n="contact_description">Connect with Sri Ramesh Krishna directly through WhatsApp for
+                consultations and enquiries.</p>
+            <div class="contact-city">
+                <span data-i18n="contact_city">Office Location:</span>
+                <span class="contact-city-name">Nagasandra, Karnataka</span>
+            </div>
+            <p class="contact-note" data-i18n="contact_maps_note"></p>
+            <a href="https://wa.me/919663406667" target="_blank" class="whatsapp-btn" rel="noopener noreferrer">
+                <span data-i18n="btn_whatsapp">Chat on WhatsApp</span>
+            </a>
+        </section>
+    </div>
+
+    <!-- BOOKING SECTION (Hidden - moved to Birth Chart page) -->
+    <section class="booking" id="booking" style="display: none;">
+        <div class="booking-left">
+            <h2 data-i18n="booking_heading">Book a Consultation</h2>
+            <div class="booking-info">
+                <h3 data-i18n="booking_timing_heading">Consultation Availability</h3>
+                <p data-i18n="booking_timing">Monday to Friday — 9:00 AM to 6:00 PM<br>Visit anytime on your booked date
+                </p>
+            </div>
+            <p style="font-size: 16px; color: var(--text-dark); line-height: 1.8;" data-i18n="booking_description">Share
+                your details through this form. Upon submission, you'll receive a WhatsApp message to confirm your
+                booking with Sri Ramesh Krishna.</p>
+        </div>
+        <div class="booking-right">
+            <form class="booking-form" id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                <div class="form-group">
+                    <label data-i18n="form_name">Full Name <span style="color: var(--error-red);">*</span></label>
+                    <input type="text" id="fullName" required aria-required="true">
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="form_gender">Gender <span style="color: var(--error-red);">*</span></label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="gender" value="Male" required aria-required="true">
+                            <span data-i18n="gender_male">Male</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="Female">
+                            <span data-i18n="gender_female">Female</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="Others">
+                            <span data-i18n="gender_others">Others</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="form_city">Your City <span style="color: var(--error-red);">*</span></label>
+                    <input type="text" id="city" required aria-required="true">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="form_dob">Date of Birth (DD/MM/YYYY) <span
+                                style="color: var(--error-red);">*</span></label>
+                        <input type="date" id="dob" required aria-required="true" aria-describedby="dobError"
+                            min="1925-01-01" max="2025-12-31">
+                        <div class="error-message" id="dobError">Please select a valid date</div>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_tob">Time of Birth <span
+                                style="color: var(--error-red);">*</span></label>
+                        <input type="time" id="tob" required aria-required="true">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="form_cons_date">Preferred Consultation Date (DD/MM/YYYY) <span
+                            style="color: var(--error-red);">*</span></label>
+                    <input type="date" id="consultationDate" required aria-required="true"
+                        aria-describedby="consDateError" min="2025-01-01" max="2026-12-31">
+                    <div class="error-message" id="consDateError">Please select a valid consultation date</div>
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="form_cons_type">Type of Consultation (Optional)</label>
+                    <textarea id="consultationType" rows="3"
+                        placeholder="e.g., Horoscope reading, Career guidance, Marriage consultation..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="form_whatsapp">Your WhatsApp Number <span
+                            style="color: var(--error-red);">*</span></label>
+                    <input type="tel" id="whatsappNumber" placeholder="+91..." required aria-required="true"
+                        aria-describedby="whatsappError">
+                    <div class="error-message" id="whatsappError">Please enter a valid WhatsApp number</div>
+                </div>
+
+                <p class="form-note" data-i18n="booking_form_note">Note: Kundli / horoscope matching is not done as part
+                    of this booking.</p>
+
+                <button type="submit" class="submit-btn" data-i18n="btn_submit">Submit &amp; Book via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact">
+        <h2 data-i18n="contact_heading">Get In Touch</h2>
+        <p data-i18n="contact_description">Connect with Sri Ramesh Krishna directly through WhatsApp for consultations
+            and enquiries.</p>
+        <div class="contact-city">
+            <span data-i18n="contact_city">Office Location:</span>
+            <span class="contact-city-name">Nagasandra, Karnataka</span>
+        </div>
+        <p class="contact-note" data-i18n="contact_maps_note"></p>
+        <a href="https://wa.me/919663406667" target="_blank" class="whatsapp-btn" rel="noopener noreferrer">
+            <span data-i18n="btn_whatsapp">Chat on WhatsApp</span>
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p data-i18n="footer_text">© <span class="year" id="year"></span> Sri Ramesh Krishna. All rights reserved to LQ
+            🚀. |
+            Traditional Vedic Astrology &amp; Spiritual Guidance</p>
+    </footer>
+
+    <script>
+        // TRANSLATIONS OBJECT
+        const translations = {
+            en: {
+                header_title: "Astrologer Sri Ramesh Krishna",
+                header_subtitle: "Traditional Vedic Astrology & Divine Guidance",
+                hero_heading: "Seek Divine Guidance with Sri Ramesh Krishna",
+                hero_subheading: "Traditional South Indian Vedic Astrology rooted in ancient wisdom. Gain clarity on life's path through authentic astrological guidance and spiritual counselling.",
+                tag_experience: "30+ Years Combined Experience",
+                tag_languages: "English • Tamil • Kannada",
+                tag_consultations: "Personal Consultations",
+                home_services_heading: "Our Sacred Services",
+                home_services_intro: "Comprehensive astrological guidance rooted in ancient Vedic wisdom",
+                home_service_1: "📊 Complete Horoscope Reading",
+                home_service_1_desc: "In-depth birth chart analysis with career, marriage, health and finance predictions",
+                home_service_2: "💑 Kundli Matching",
+                home_service_2_desc: "Traditional compatibility analysis using Ashtakoot system for marriage",
+                home_service_3: "🕉️ Muhurtham & Remedies",
+                home_service_3_desc: "Auspicious timing selection and powerful pariharam for planetary blessings",
+                home_why_heading: "Why Choose Sri Ramesh Krishna",
+                home_why_1: "30+ Years Lineage",
+                home_why_1_desc: "Generational expertise in traditional Vedic astrology",
+                home_why_2: "Multilingual Support",
+                home_why_2_desc: "Consultations in English, Tamil, and Kannada",
+                home_why_3: "Authentic Guidance",
+                home_why_3_desc: "Compassionate readings rooted in dharmic principles",
+                home_why_4: "Personal Care",
+                home_why_4_desc: "Dedicated one-on-one consultations tailored to you",
+                home_testimonials_heading: "What Our Devotees Say",
+                home_testimonials_intro: "Hear from families who found clarity and peace",
+                home_testimonial_1: '"Sri Ramesh Krishna\'s guidance brought harmony to my family. His accurate readings and remedies truly work!"',
+                home_testimonial_1_author: "— Meera S., Bangalore",
+                home_testimonial_2: '"His Vedic knowledge combined with compassionate approach helped me understand my life\'s purpose."',
+                home_testimonial_2_author: "— Rajesh K., Chennai",
+                home_testimonial_3: '"The Kundli guidance for my daughter\'s marriage was insightful and authentic. Highly recommended!"',
+                home_testimonial_3_author: "— Lakshmi I., Mysore",
+                home_view_all_testimonials: "View All Testimonials",
+                home_cta_heading: "Ready to Seek Divine Guidance?",
+                home_cta_text: "Book your consultation today and illuminate your path with ancient Vedic wisdom",
+                home_cta_book: "Book Consultation",
+                home_cta_whatsapp: "Chat on WhatsApp",
+                btn_book: "Book Traditional Consultation",
+                btn_profile: "Astrologer Profile & Honours",
+                btn_experiences: "Devotee Experiences",
+                astrologer_badge: "Honoured for Service in Vedic Astrology",
+                nav_home: "Home",
+                nav_about: "About",
+                nav_services: "Services",
+                nav_horoscopes: "Horoscopes",
+                nav_birthchart: "Birth Chart",
+                nav_testimonials: "Testimonials",
+                nav_gallery: "Gallery",
+                nav_contact: "Contact",
+                services_heading: "Our Services",
+                service_1_title: "Horoscope Reading",
+                service_1_desc: "Complete analysis of your birth chart with detailed predictions for all life aspects including career, marriage, health, and finances.",
+                service_2_title: "Kundli Matching",
+                service_2_desc: "Traditional compatibility analysis for marriage prospects based on Vedic astrology principles and Ashtakoot matching system.",
+                service_3_title: "Muhurtham Calculation",
+                service_3_desc: "Auspicious timing selection for important life events like marriage, business launch, housewarming, and religious ceremonies.",
+                service_4_title: "Prashna Consultation",
+                service_4_desc: "Immediate answers to specific questions using horary astrology techniques based on the exact time of your inquiry.",
+                service_5_title: "Pariharam & Remedies",
+                service_5_desc: "Powerful remedial measures including mantra chanting, gemstone recommendations, and ritual guidance to overcome planetary afflictions.",
+                service_6_title: "Spiritual Guidance",
+                service_6_desc: "Dharmic counseling and spiritual direction to align your life path with cosmic energies and achieve inner peace.",
+                horoscopes_heading: "Daily Horoscopes",
+                horoscopes_intro: "Check your daily astrological predictions based on your zodiac sign",
+                zodiac_aries: "♈ Aries (Mesha)",
+                zodiac_aries_desc: "Mar 21 - Apr 19",
+                zodiac_taurus: "♉ Taurus (Vrishabha)",
+                zodiac_taurus_desc: "Apr 20 - May 20",
+                zodiac_gemini: "♊ Gemini (Mithuna)",
+                zodiac_gemini_desc: "May 21 - Jun 20",
+                zodiac_cancer: "♋ Cancer (Karka)",
+                zodiac_cancer_desc: "Jun 21 - Jul 22",
+                zodiac_leo: "♌ Leo (Simha)",
+                zodiac_leo_desc: "Jul 23 - Aug 22",
+                zodiac_virgo: "♍ Virgo (Kanya)",
+                zodiac_virgo_desc: "Aug 23 - Sep 22",
+                zodiac_libra: "♎ Libra (Tula)",
+                zodiac_libra_desc: "Sep 23 - Oct 22",
+                zodiac_scorpio: "♏ Scorpio (Vrishchika)",
+                zodiac_scorpio_desc: "Oct 23 - Nov 21",
+                zodiac_sagittarius: "♐ Sagittarius (Dhanu)",
+                zodiac_sagittarius_desc: "Nov 22 - Dec 21",
+                zodiac_capricorn: "♑ Capricorn (Makara)",
+                zodiac_capricorn_desc: "Dec 22 - Jan 19",
+                zodiac_aquarius: "♒ Aquarius (Kumbha)",
+                zodiac_aquarius_desc: "Jan 20 - Feb 18",
+                zodiac_pisces: "♓ Pisces (Meena)",
+                zodiac_pisces_desc: "Feb 19 - Mar 20",
+                banner_text: "Illuminate Your Path with Cosmic Wisdom",
+                gallery_title: "Sri Ramesh Krishna Through the Years",
+                about_heading: "About Sri Ramesh Krishna",
+                about_paragraph_1: "With over 30 years of combined family lineage in traditional Vedic Astrology, Sri Ramesh Krishna brings ancient wisdom to modern seekers. Trained in the lineage of Gurukula astrology, he combines classical methodologies with compassionate guidance to illuminate the divine path of his devotees.",
+                about_paragraph_2: "His expertise spans horoscope analysis, Kundli matching guidance, Muhurtham calculations, and Prashna consultations. Each session is tailored to address your unique spiritual needs, offering pariharam (remedial measures) and dharmic guidance rooted in Tamil Nadu's traditional practices.",
+                about_paragraph_3: "Sri Ramesh Krishna believes astrology is not mere prediction, but a tool for self-awareness and spiritual evolution. He has helped hundreds of families find clarity, harmony, and divine blessings through authentic astrological consultation.",
+                qualifications_heading: "Qualifications & Expertise",
+                qual_guru: "Gurukula Training in Vedic Astrology",
+                qual_horoscope: "Horoscope Analysis & Kundli Reading",
+                qual_muhurtham: "Muhurtham Calculations",
+                qual_prashna: "Prashna Consultation",
+                qual_pariharam: "Pariharam & Remedial Measures",
+                honours_heading: "Honours & Recognition",
+                award_1: "Recognition for Spiritual Guidance (2023)",
+                award_2: "Vedic Astrology Excellence Award (2022)",
+                award_3: "Community Service in Dharmic Arts (2021)",
+                award_4: "Traditional Knowledge Keeper (2020)",
+                award_upload_note: "Note: Awards certificates can be uploaded and displayed here",
+                testimonials_heading: "Devotee Experiences",
+                testimonials_intro: "Hear from families whose lives have been touched by divine guidance",
+                testimonial_1_text: "Sri Ramesh Krishna's guidance has been transformative. His accurate readings brought clarity to my marriage concerns, and the remedies suggested have created harmony in my family.",
+                testimonial_1_author: "— Meera Sharma, Bangalore",
+                testimonial_2_text: "I was hesitant about astrology until I met Sri Ramesh Krishna. His compassionate approach and spiritual wisdom helped me understand my life's purpose. Highly recommended!",
+                testimonial_2_author: "— Rajesh Kumar, Chennai",
+                testimonial_3_text: "The Kundli guidance for my daughter's marriage was insightful and authentic. Sri Ramesh Krishna's Vedic knowledge combined with modern wisdom makes him truly unique.",
+                testimonial_3_author: "— Lakshmi Iyer, Mysore",
+                booking_heading: "Book a Consultation",
+                booking_timing_heading: "Consultation Availability",
+                booking_timing: "Monday to Friday — 9:00 AM to 6:00 PM\nVisit anytime on your booked date",
+                booking_description: "Share your details through this form. Upon submission, you'll receive a WhatsApp message to confirm your booking with Sri Ramesh Krishna.",
+                form_name: "Full Name",
+                form_gender: "Gender",
+                gender_male: "Male",
+                gender_female: "Female",
+                gender_others: "Others",
+                form_city: "Your City",
+                form_dob: "Date of Birth (DD/MM/YYYY)",
+                form_tob: "Time of Birth",
+                form_cons_date: "Preferred Consultation Date (DD/MM/YYYY)",
+                form_cons_type: "Type of Consultation (Optional)",
+                form_whatsapp: "Your WhatsApp Number",
+                booking_form_note: "Note: Kundli / horoscope matching is not done as part of this booking.",
+                btn_submit: "Submit & Book via WhatsApp",
+                contact_heading: "Get In Touch",
+                contact_description: "Connect with Sri Ramesh Krishna directly through WhatsApp for consultations and enquiries.",
+                contact_city: "Office Location:",
+                contact_maps_note: "",
+                btn_whatsapp: "Chat on WhatsApp",
+                footer_text: "© {year} Sri Ramesh Krishna. All rights reserved. | Traditional Vedic Astrology & Spiritual Guidance"
+            },
+            ta: {
+                header_title: "ஸ்ரீ ரமேஷ் கிருஷ்ணன்",
+                header_subtitle: "பாரம்பரிய வேதிய ஜ்யோதிஷம் மற்றும் தெய்வ வழிகாட்டுதல்",
+                nav_home: "முகப்பு",
+                nav_about: "பற்றி",
+                nav_services: "சேவைகள்",
+                nav_horoscopes: "ஜாதகங்கள்",
+                nav_birthchart: "பிறப்பு விளக்கப்படம்",
+                nav_testimonials: "அனுபவங்கள்",
+                nav_gallery: "படக்காட்சி",
+                nav_contact: "தொடர்பு",
+                services_heading: "எங்கள் சேவைகள்",
+                service_1_title: "ஜாதக வாசனை",
+                service_1_desc: "தொழில், திருமணம், ஆரோக்கியம் மற்றும் நிதிகள் உள்ளிட்ட அனைத்து வாழ்க்கை அம்சங்களுக்கும் விரிவான கணிப்புகளுடன் முழுமையான பிறப்பு அட்டவணை பகுப்பாய்வு.",
+                service_2_title: "குண்டலி பொருத்தம்",
+                service_2_desc: "வேதிய ஜ்யோதிஷ கோட்பாடுகள் மற்றும் அஷ்டகூட பொருத்த முறையின் அடிப்படையில் திருமண வாய்ப்புகளுக்கான பாரம்பரிய பொருந்தக்கூடிய பகுப்பாய்வு.",
+                service_3_title: "முகூர்த்த கணக்கீடு",
+                service_3_desc: "திருமணம், வணிக தொடக்கம், இல்ல புகுவிழா மற்றும் மத விழாக்கள் போன்ற முக்கிய வாழ்க்கை நிகழ்வுகளுக்கு நல்ல நேரம் தேர்வு.",
+                service_4_title: "பிரஷ்ணா ஆலோசனை",
+                service_4_desc: "உங்கள் விசாரணையின் சரியான நேரத்தை அடிப்படையாகக் கொண்ட மணிநேர ஜ்யோதிஷ நுட்பங்களைப் பயன்படுத்தி குறிப்பிட்ட கேள்விகளுக்கான உடனடி பதில்கள்.",
+                service_5_title: "பரிஹாரம் & தீர்வுகள்",
+                service_5_desc: "மந்திர சோர், ரத்தின பரிந்துரைகள் மற்றும் கிரக பாதிப்புகளை கடப்பதற்கான சடங்கு வழிகாட்டுதல் உள்ளிட்ட சக்திவாய்ந்த தீர்வு நடவடிக்கைகள்.",
+                service_6_title: "ஆன்மீக வழிகாட்டுதல்",
+                service_6_desc: "உங்கள் வாழ்க்கை பாதையை பிரபஞ்ச சக்திகளுடன் சீரமைத்து உள்ளார்ந்த அமைதியை அடைய தர்ம ஆலோசனை மற்றும் ஆன்மீக திசையை.",
+                horoscopes_heading: "தினசரி ஜாதகங்கள்",
+                horoscopes_intro: "உங்கள் ராசி அடிப்படையில் தினசரி ஜ்யோதிஷ கணிப்புகளை சரிபார்க்கவும்",
+                zodiac_aries: "♈ மேஷம்",
+                zodiac_aries_desc: "மார் 21 - ஏப் 19",
+                zodiac_taurus: "♉ வ்ருஷபம்",
+                zodiac_taurus_desc: "ஏப் 20 - மே 20",
+                zodiac_gemini: "♊ மிதுனம்",
+                zodiac_gemini_desc: "மே 21 - ஜூன் 20",
+                zodiac_cancer: "♋ கர்கடகம்",
+                zodiac_cancer_desc: "ஜூன் 21 - ஜூலை 22",
+                zodiac_leo: "♌ சிம்மம்",
+                zodiac_leo_desc: "ஜூலை 23 - ஆக 22",
+                zodiac_virgo: "♍ கன்னி",
+                zodiac_virgo_desc: "ஆக 23 - செப் 22",
+                zodiac_libra: "♎ துலாம்",
+                zodiac_libra_desc: "செப் 23 - அக் 22",
+                zodiac_scorpio: "♏ விருச்சிகம்",
+                zodiac_scorpio_desc: "அக் 23 - நவ 21",
+                zodiac_sagittarius: "♐ தனுசு",
+                zodiac_sagittarius_desc: "நவ 22 - டிச 21",
+                zodiac_capricorn: "♑ மகரம்",
+                zodiac_capricorn_desc: "டிச 22 - ஜன 19",
+                zodiac_aquarius: "♒ கும்பம்",
+                zodiac_aquarius_desc: "ஜன 20 - பிப் 18",
+                zodiac_pisces: "♓ மீனம்",
+                zodiac_pisces_desc: "பிப் 19 - மார் 20",
+                hero_heading: "ஸ்ரீ ரமேஷ் கிருஷ்ணனுடன் தெய்வ வழிகாட்டுதலை பெறுங்கள்",
+                hero_subheading: "பண்டைய ஞானத்தில் வேரூன்றிய பாரம்பரிய தென் இந்திய வேதிய ஜ்யோதிஷம். உண்மையான ஜ்யோதிஷ வழிகாட்டுதல் மற்றும் ஆன்மீக ஆலோசனார் மூலம் உங்கள் வாழ்க்கையின் பாதையில் தெளிவு பெறுங்கள்.",
+                tag_experience: "30+ ஆண்டுகள் ஒருங்கிணைந்த அனுபவம்",
+                tag_languages: "ஆங்கிலம் • தமிழ் • கன்னடம்",
+                tag_consultations: "தனிப்பட்ட ஆலோசனைகள்",
+                home_services_heading: "எங்கள் புனித சேவைகள்",
+                home_services_intro: "பண்டைய வேதிய ஞானத்தில் வேரூன்றிய விரிவான ஜ்யோதிஷ வழிகாட்டுதல்",
+                home_service_1: "📊 முழுமையான ஜாதக வாசனை",
+                home_service_1_desc: "தொழில், திருமணம், ஆரோக்கியம் மற்றும் நிதிகளுடன் பிறப்பு அட்டவணை பகுப்பாய்வு",
+                home_service_2: "💑 குண்டலி பொருத்தம்",
+                home_service_2_desc: "திருமணத்திற்கான அஷ்டகூட முறையைப் பயன்படுத்தி பாரம்பரிய பொருந்தக்கூடிய பகுப்பாய்வு",
+                home_service_3: "🕉️ முகூர்த்தம் & பரிஹாரம்",
+                home_service_3_desc: "கிரக ஆசீர்வாதத்திற்கான நல்ல நேரம் தேர்வு மற்றும் சக்திவாய்ந்த பரிஹாரம்",
+                home_why_heading: "ஏன் ஸ்ரீ ரமேஷ் கிருஷ்ணனைத் தேர்ந்தெடுக்க வேண்டும்",
+                home_why_1: "30+ ஆண்டுகள் பரம்பரை",
+                home_why_1_desc: "பாரம்பரிய வேதிய ஜ்யோதிஷத்தில் தலைமுறை நிபுணத்துவம்",
+                home_why_2: "பல மொழி ஆதரவு",
+                home_why_2_desc: "ஆங்கிலம், தமிழ் மற்றும் கன்னடத்தில் ஆலோசனைகள்",
+                home_why_3: "உண்மையான வழிகாட்டுதல்",
+                home_why_3_desc: "தர்ம கோட்பாடுகளில் வேரூன்றிய இரக்க வாசனைகள்",
+                home_why_4: "தனிப்பட்ட பராமரிப்பு",
+                home_why_4_desc: "உங்களுக்கு ஏற்ப வடிவமைக்கப்பட்ட அர்ப்பணிப்புள்ள ஆலோசனைகள்",
+                home_testimonials_heading: "எங்கள் பக்தர்கள் என்ன சொல்கிறார்கள்",
+                home_testimonials_intro: "தெளிவு மற்றும் அமைதியைக் கண்ட குடும்பங்களிடமிருந்து கேளுங்கள்",
+                home_testimonial_1: '"ஸ்ரீ ரமேஷ் கிருஷ்ணனின் வழிகாட்டுதல் எனது குடும்பத்திற்கு நல்லிணக்கத்தை கொண்டு வந்தது. அவரின் துல்லியமான வாசனைகள் மற்றும் பரிஹாரங்கள் உண்மையில் வேலை செய்கின்றன!"',
+                home_testimonial_1_author: "— மீரா எஸ்., பெங்களூர்",
+                home_testimonial_2: '"அவரின் வேதிய ஞானம் இரக்க அணுகுமுறையுடன் இணைந்து எனது வாழ்க்கையின் நோக்கத்தைப் புரிந்துகொள்ள உதவியது."',
+                home_testimonial_2_author: "— ராஜேஷ் கே., சென்னை",
+                home_testimonial_3: '"எனது மகளின் திருமணத்திற்கான குண்டலி வழிகாட்டுதல் நுண்ணறிவு மற்றும் உண்மையாக இருந்தது. மிகவும் பரிந்துரைக்கப்படுகிறது!"',
+                home_testimonial_3_author: "— லக்ஷ்மி ஐ., மைசூர்",
+                home_view_all_testimonials: "அனைத்து பரிந்துரைகளையும் காண்க",
+                home_cta_heading: "தெய்வ வழிகாட்டுதலை தேட தயாரா?",
+                home_cta_text: "இன்று உங்கள் ஆலோசனையை முன்பதிவு செய்து பண்டைய வேதிய ஞானத்துடன் உங்கள் பாதையை ஒளிர்வுபடுத்துங்கள்",
+                home_cta_book: "ஆலோசனையை முன்பதிவு செய்ய",
+                home_cta_whatsapp: "WhatsApp இல் உரையாடு",
+                btn_book: "பாரம்பரிய ஆலோசனையை முன்பதிவு செய்ய",
+                btn_profile: "ஜ்யோதிஷியின் சுயவிவரம் மற்றும் மரியாதைகள்",
+                btn_experiences: "பக்தர்களின் அனுபவங்கள்",
+                astrologer_badge: "வேதிய ஜ்யோதிஷ சேவைக்கான மரியாதை",
+                banner_text: "பிரபஞ்ச ஞானத்தின் மூலம் உங்கள் பாதையை ஒளிர்வுபடுத்துங்கள்",
+                gallery_title: "வருஷங்களூடாக ஸ்ரீ ரமேஷ் கிருஷ்ணன்",
+                about_heading: "ஸ்ரீ ரமேஷ் கிருஷ்ணன் பற்றி",
+                about_paragraph_1: "வேதிய ஜ்யோதிஷத்தில் 30 ஆண்டுகளுக்கும் மேலான குடும்ப மரபு கொண்ட ஸ்ரீ ரமேஷ் கிருஷ்ணன் பண்டைய ஞானத்தை நவீன தேடுபவர்களுக்கு கொண்டு வருகிறார்.",
+                about_paragraph_2: "அவரது நிபுணத்வம் ஜாதக பகுப்பாய்வு, குண்டலி பொருத்தம் வழிகாட்டுதல், முகூர்த்த கணக்கீடுகள் மற்றும் பிரஷ்ணா ஆலோசனைகளை விரிவுபடுத்துகிறது.",
+                about_paragraph_3: "ஸ்ரீ ரமேஷ் கிருஷ்ணன் ஜ்யோதிஷம் வெறும் எதிர்காலத்துவாணி அல்ல, ஆன்ம விழிப்புணர்வு மற்றும் ஆன்மீக பரிணாமத்தின் கருவி என நம்புகிறார்.",
+                qualifications_heading: "தகுதிகள் மற்றும் நிபுணத்வம்",
+                qual_guru: "வேதிய ஜ்யோதிஷத்தில் குருகுல பயிற்சி",
+                qual_horoscope: "ஜாதக பகுப்பாய்வு மற்றும் குண்டலி வாசனை",
+                qual_muhurtham: "முகூர்த்த கணக்கீடுகள்",
+                qual_prashna: "பிரஷ்ணா ஆலோசனை",
+                qual_pariharam: "பரிஹாரம் மற்றும் சிகிச்சை நடவடிக்கைகள்",
+                honours_heading: "மரியாதைகள் மற்றும் அங்கீகாரம்",
+                award_1: "ஆன்மீக வழிகாட்டுதலுக்கான அங்கீகாரம் (2023)",
+                award_2: "வேதிய ஜ்யோதிஷ சிறந்தமைப்பு விருது (2022)",
+                award_3: "தர்ம கலைகளில் சமூக சேவை (2021)",
+                award_4: "பாரம்பரிய ஞான வைத்திருப்பவர் (2020)",
+                award_upload_note: "குறிப்பு: விருது சான்றிதழ்களை இங்கே பதிவேற்றி காட்ட முடியும்",
+                testimonials_heading: "பக்தர்களின் அனுபவங்கள்",
+                testimonials_intro: "தெய்வ வழிகாட்டுதல் தொட்ட குடும்பங்களிடமிருந்து கேளுங்கள்",
+                testimonial_1_text: "ஸ்ரீ ரமேஷ் கிருஷ்ணனின் வழிகாட்டுதல் மாற்றுவதாக இருந்துவிட்டது. அவரின் துல்லியமான வாசனைகள் எனது திருமண கவலைகளுக்கு தெளிவு கொண்டு வந்தன.",
+                testimonial_1_author: "— மீரா சர்மா, பெங்களூர்",
+                testimonial_2_text: "ஸ்ரீ ரமேஷ் கிருஷ்ணனைச் சந்திக்கும் வரை ஜ்யோதிஷம் பற்றி நான் தயங்கினேன். அவரின் இரக்க அணுகுமுறை மற்றும் ஆன்மீக ஞானம் உதவியது.",
+                testimonial_2_author: "— ராஜேஷ் குமார், சென்னை",
+                testimonial_3_text: "எனது மகளின் திருமணத்திற்கான குண்டலி வழிகாட்டுதல் நுண்ணறிவுநிறைந்ததாகவும் உண்மையாகவும் இருந்தது.",
+                testimonial_3_author: "— லக்ஷ்மி ஐயர், மைசூர்",
+                booking_heading: "ஆலோசனை முன்பதிவு செய்ய",
+                booking_timing_heading: "ஆலோசனை கிடைக்கும் நேரம்",
+                booking_timing: "திங்கட்கிழமை முதல் வெள்ளிக்கிழமை — காலை 9:00 மணி முதல் மாலை 6:00 மணி\nஉங்கள் முன்பதிவு செய்த நாளில் எந்த நேரத்திலும் வருக",
+                booking_description: "இந்த படிவம் மூலம் உங்கள் விவரங்களைப் பகிரவும். சமர்ப்பணைக்குப் பிறகு, ஸ்ரீ ரமேஷ் கிருஷ்ணனுடன் உங்கள் முன்பதிவை உறுதிப்படுத்த ஒரு WhatsApp செய்தி பெறுவீர்கள்.",
+                form_name: "முழு பெயர்",
+                form_gender: "பாலினம்",
+                gender_male: "ஆண்",
+                gender_female: "பெண்",
+                gender_others: "மற்றவை",
+                form_city: "உங்கள் நகரம்",
+                form_dob: "பிறந்த தேதி (DD/MM/YYYY)",
+                form_tob: "பிறந்த நேரம்",
+                form_cons_date: "விரும்பிய ஆலோசனை தேதி (DD/MM/YYYY)",
+                form_cons_type: "ஆலோசனையின் வகை (விருப்பத்தேர்வு)",
+                form_whatsapp: "உங்கள் WhatsApp எண்",
+                booking_form_note: "குறிப்பு: இந்த முன்பதிவின் பகுதியாக குண்டலி / ஜாதக பொருத்தம் செய்யப்படாது.",
+                btn_submit: "சமர்ப்பணை செய்ய மற்றும் WhatsApp மூலம் முன்பதிவு செய்ய",
+                contact_heading: "தொடர்பு கொள்ளுங்கள்",
+                contact_description: "ஆலோசனைகள் மற்றும் விசாரணைகளுக்கு ஸ்ரீ ரமேஷ் கிருஷ்ணனுடன் WhatsApp மூலம் நேரடியாக இணைந்துகொள்ளுங்கள்.",
+                contact_city: "அலுவலக இடம்:",
+                contact_maps_note: "",
+                btn_whatsapp: "WhatsApp இல் உரையாடு",
+                footer_text: "© {year} ஸ்ரீ ரமேஷ் கிருஷ்ணன். அனைத்து உரிமைகளும் LQ க்கு ஒதுக்கப்பட்டுள்ளது பாதுகாக்கப்பட்டவ. | பாரம்பரிய வேதிய ஜ்யோதிஷம் மற்றும் ஆன்மீக வழிகாட்டுதல்"
+            },
+            kn: {
+                header_title: "ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ",
+                header_subtitle: "ಪರಂಪರಾಗತ ವೈದಿಕ ಜ್ಯೋತಿಷ ಮತ್ತು ದೈವಿಕ ಮಾರ್ಗದರ್ಶನ",
+                nav_home: "ಮನೆ",
+                nav_about: "ಬಗ್ಗೆ",
+                nav_services: "ಸೇವೆಗಳು",
+                nav_horoscopes: "ಜಾತಕಗಳು",
+                nav_birthchart: "ಜನ್ಮ ಚಾರ್ಟ್",
+                nav_testimonials: "ಅನುಭವಗಳು",
+                nav_gallery: "ಗ್ಯಾಲರಿ",
+                nav_contact: "ಸಂಪರ್ಕ",
+                services_heading: "ನಮ್ಮ ಸೇವೆಗಳು",
+                service_1_title: "ಜಾತಕ ಓದುವಿಕೆ",
+                service_1_desc: "ವೃತ್ತಿ, ವಿವಾಹ, ಆರೋಗ್ಯ ಮತ್ತು ಹಣಕಾಸುಗಳನ್ನು ಒಳಗೊಂಡಂತೆ ಎಲ್ಲಾ ಜೀವನ ಅಂಶಗಳಿಗೆ ವಿವರವಾದ ಭವಿಷ್ಯವಾಣಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಜನ್ಮ ಚಾರ್ಟ್‌ನ ಸಂಪೂರ್ಣ ವಿಶ್ಲೇಷಣೆ.",
+                service_2_title: "ಕುಂಡಲಿ ಹೊಂದಾಣಿಕೆ",
+                service_2_desc: "ವೈದಿಕ ಜ್ಯೋತಿಷ ಸಿದ್ಧಾಂತಗಳು ಮತ್ತು ಅಷ್ಟಕೂಟ ಹೊಂದಾಣಿಕೆ ವ್ಯವಸ್ಥೆಯ ಆಧಾರದ ಮೇಲೆ ವಿವಾಹ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಪರಂಪರಾಗತ ಹೊಂದಾಣಿಕೆ ವಿಶ್ಲೇಷಣೆ.",
+                service_3_title: "ಮುಹೂರ್ತ ಗಣನೆ",
+                service_3_desc: "ವಿವಾಹ, ವ್ಯಾಪಾರ ಪ್ರಾರಂಭ, ಗೃಹಪ್ರವೇಶ ಮತ್ತು ಧಾರ್ಮಿಕ ಸಮಾರಂಭಗಳಂತಹ ಪ್ರಮುಖ ಜೀವನ ಘಟನೆಗಳಿಗೆ ಮಂಗಳಕರ ಸಮಯ ಆಯ್ಕೆ.",
+                service_4_title: "ಪ್ರಶ್ನ ಪರಾಮರ್ಶ",
+                service_4_desc: "ನಿಮ್ಮ ವಿಚಾರಣೆಯ ನಿಖರ ಸಮಯದ ಆಧಾರದ ಮೇಲೆ ಹೊರರಿ ಜ್ಯೋತಿಷ ತಂತ್ರಗಳನ್ನು ಬಳಸಿಕೊಂಡು ನಿರ್ದಿಷ್ಟ ಪ್ರಶ್ನೆಗಳಿಗೆ ತಕ್ಷಣದ ಉತ್ತರಗಳು.",
+                service_5_title: "ಪರಿಹಾರ & ಉಪಾಯಗಳು",
+                service_5_desc: "ಮಂತ್ರ ಜಪ, ರತ್ನದ ಪರಿಹಾರಗಳು ಮತ್ತು ಗ್ರಹದ ಬಾಧೆಗಳನ್ನು ಪರಿಹರಿಸಲು ಸಂಸ್ಕಾರ ಮಾರ್ಗದರ್ಶನವನ್ನು ಒಳಗೊಂಡಂತೆ ಶಕ್ತಿಯುತ ಪರಿಹಾರ ಕ್ರಮಗಳು.",
+                service_6_title: "ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶನ",
+                service_6_desc: "ನಿಮ್ಮ ಜೀವನ ಮಾರ್ಗವನ್ನು ವಿಶ್ವ ಶಕ್ತಿಗಳೊಂದಿಗೆ ಹೊಂದಾಣಿಕೆ ಮಾಡಲು ಮತ್ತು ಆಂತರಿಕ ಶಾಂತಿ ಸಾಧಿಸಲು ಧರ್ಮ ಪರಾಮರ್ಶ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ದಿಕ್ಕು.",
+                horoscopes_heading: "ದೈನಂದಿನ ಜಾತಕಗಳು",
+                horoscopes_intro: "ನಿಮ್ಮ ರಾಶಿ ಚಕ್ರದ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ದೈನಂದಿನ ಜ್ಯೋತಿಷೀಯ ಭವಿಷ್ಯವಾಣಿಗಳನ್ನು ಪರಿಶೀಲಿಸಿ",
+                zodiac_aries: "♈ ಮೇಷ",
+                zodiac_aries_desc: "ಮಾರ್ 21 - ಏಪ್ರಿ 19",
+                zodiac_taurus: "♉ ವೃಷಭ",
+                zodiac_taurus_desc: "ಏಪ್ರಿ 20 - ಮೇ 20",
+                zodiac_gemini: "♊ ಮಿಥುನ",
+                zodiac_gemini_desc: "ಮೇ 21 - ಜೂನ್ 20",
+                zodiac_cancer: "♋ ಕರ್ಕಾಟಕ",
+                zodiac_cancer_desc: "ಜೂನ್ 21 - ಜುಲೈ 22",
+                zodiac_leo: "♌ ಸಿಂಹ",
+                zodiac_leo_desc: "ಜುಲೈ 23 - ಆಗ 22",
+                zodiac_virgo: "♍ ಕನ್ಯ",
+                zodiac_virgo_desc: "ಆಗ 23 - ಸೆಪ್ 22",
+                zodiac_libra: "♎ ತುಲಾ",
+                zodiac_libra_desc: "ಸೆಪ್ 23 - ಅಕ್ 22",
+                zodiac_scorpio: "♏ ವೃಶ್ಚಿಕ",
+                zodiac_scorpio_desc: "ಅಕ್ 23 - ನವ 21",
+                zodiac_sagittarius: "♐ ಧನು",
+                zodiac_sagittarius_desc: "ನವ 22 - ಡಿಸೆ 21",
+                zodiac_capricorn: "♑ ಮಕರ",
+                zodiac_capricorn_desc: "ಡಿಸೆ 22 - ಜನ 19",
+                zodiac_aquarius: "♒ ಕುಂಭ",
+                zodiac_aquarius_desc: "ಜನ 20 - ಫೆಬ್ 18",
+                zodiac_pisces: "♓ ಮೀನ",
+                zodiac_pisces_desc: "ಫೆಬ್ 19 - ಮಾರ್ 20",
+                hero_heading: "ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣನೊಂದಿಗೆ ದೈವಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಹುಡುಕಿ",
+                hero_subheading: "ಪ್ರಾಚೀನ ಬುದ್ಧಿಮತ್ತೆಯಲ್ಲಿ ಬೇರುಳ್ಳಿರುವ ಪರಂಪರಾಗತ ದಕ್ಷಿಣ ಭಾರತೀಯ ವೈದಿಕ ಜ್ಯೋತಿಷ. ಸತ್ಯವಾದ ಜ್ಯೋತಿಷೀಯ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಪರಾಮರ್ಶದ ಮೂಲಕ ನಿಮ್ಮ ಜೀವನದ ಪಥದಲ್ಲಿ ಸ್ಪಷ್ಟತೆ ಪಡೆಯಿರಿ.",
+                tag_experience: "30+ ವರ್ಷಗಳ ಸಂಯೋಜಿತ ಅನುಭವ",
+                tag_languages: "ಇಂಗ್ಲೀಷ್ • ತಮಿಳು • ಕನ್ನಡ",
+                tag_consultations: "ವ್ಯಕ್ತಿಗತ ಪರಾಮರ್ಶ",
+                home_services_heading: "ನಮ್ಮ ಪವಿತ್ರ ಸೇವೆಗಳು",
+                home_services_intro: "ಪ್ರಾಚೀನ ವೈದಿಕ ಬುದ್ಧಿಮತ್ತೆಯಲ್ಲಿ ಬೇರೂರಿದ ಸಮಗ್ರ ಜ್ಯೋತಿಷ ಮಾರ್ಗದರ್ಶನ",
+                home_service_1: "📊 ಸಂಪೂರ್ಣ ಜಾತಕ ಓದುವಿಕೆ",
+                home_service_1_desc: "ವೃತ್ತಿ, ವಿವಾಹ, ಆರೋಗ್ಯ ಮತ್ತು ಹಣಕಾಸು ಭವಿಷ್ಯವಾಣಿಗಳೊಂದಿಗೆ ಜನ್ಮ ಚಾರ್ಟ್ ವಿಶ್ಲೇಷಣೆ",
+                home_service_2: "💑 ಕುಂಡಲಿ ಹೊಂದಾಣಿಕೆ",
+                home_service_2_desc: "ವಿವಾಹಕ್ಕಾಗಿ ಅಷ್ಟಕೂಟ ವ್ಯವಸ್ಥೆಯನ್ನು ಬಳಸಿಕೊಂಡು ಪರಂಪರಾಗತ ಹೊಂದಾಣಿಕೆ ವಿಶ್ಲೇಷಣೆ",
+                home_service_3: "🕉️ ಮುಹೂರ್ತ & ಪರಿಹಾರಗಳು",
+                home_service_3_desc: "ಗ್ರಹ ಆಶೀರ್ವಾದಕ್ಕಾಗಿ ಮಂಗಳಕರ ಸಮಯ ಆಯ್ಕೆ ಮತ್ತು ಶಕ್ತಿಯುತ ಪರಿಹಾರ",
+                home_why_heading: "ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣನನ್ನು ಏಕೆ ಆಯ್ಕೆ ಮಾಡಬೇಕು",
+                home_why_1: "30+ ವರ್ಷಗಳ ವಂಶಾವಳಿ",
+                home_why_1_desc: "ಪರಂಪರಾಗತ ವೈದಿಕ ಜ್ಯೋತಿಷದಲ್ಲಿ ತಲೆಮಾರಿನ ನೈಪುಣ್ಯತೆ",
+                home_why_2: "ಬಹುಭಾಷಾ ಬೆಂಬಲ",
+                home_why_2_desc: "ಇಂಗ್ಲೀಷ್, ತಮಿಳು ಮತ್ತು ಕನ್ನಡದಲ್ಲಿ ಪರಾಮರ್ಶಗಳು",
+                home_why_3: "ಪ್ರಾಮಾಣಿಕ ಮಾರ್ಗದರ್ಶನ",
+                home_why_3_desc: "ಧರ್ಮ ತತ್ವಗಳಲ್ಲಿ ಬೇರೂರಿದ ಕರುಣಾಮಯ ವಾಚನೆಗಳು",
+                home_why_4: "ವ್ಯಕ್ತಿಗತ ಆರೈಕೆ",
+                home_why_4_desc: "ನಿಮಗೆ ಅನುಗುಣವಾದ ಸಮರ್ಪಿತ ಒಬ್ಬರ ಮೇಲೆ ಒಬ್ಬರು ಪರಾಮರ್ಶಗಳು",
+                home_testimonials_heading: "ನಮ್ಮ ಭಕ್ತರು ಏನು ಹೇಳುತ್ತಾರೆ",
+                home_testimonials_intro: "ಸ್ಪಷ್ಟತೆ ಮತ್ತು ಶಾಂತಿಯನ್ನು ಕಂಡ ಕುಟುಂಬಗಳಿಂದ ಕೇಳಿ",
+                home_testimonial_1: '"ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣನ ಮಾರ್ಗದರ್ಶನ ನನ್ನ ಕುಟುಂಬಕ್ಕೆ ಸಾಮರಸ್ಯವನ್ನು ತಂದಿತು. ಅವರ ನಿಖರ ವಾಚನೆಗಳು ಮತ್ತು ಪರಿಹಾರಗಳು ನಿಜವಾಗಿಯೂ ಕೆಲಸ ಮಾಡುತ್ತವೆ!"',
+                home_testimonial_1_author: "— ಮೀರಾ ಎಸ್., ಬೆಂಗಳೂರು",
+                home_testimonial_2: '"ಅವರ ವೈದಿಕ ಜ್ಞಾನ ಅನುಕಂಪದ ವಿಧಾನದೊಂದಿಗೆ ನನ್ನ ಜೀವನದ ಉದ್ದೇಶವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡಿತು."',
+                home_testimonial_2_author: "— ರಾಜೇಶ್ ಕೆ., ಚೆನ್ನೈ",
+                home_testimonial_3: '"ನನ್ನ ಮಗಳಿಗೆ ಕುಂಡಲಿ ಮಾರ್ಗದರ್ಶನವು ಒಳನೋಟ ಮತ್ತು ಪ್ರಾಮಾಣಿಕವಾಗಿತ್ತು. ಹೆಚ್ಚು ಶಿಫಾರಸು!"',
+                home_testimonial_3_author: "— ಲಕ್ಷ್ಮಿ ಐ., ಮೈಸೂರು",
+                home_view_all_testimonials: "ಎಲ್ಲಾ ಶಿಫಾರಸುಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+                home_cta_heading: "ದೈವಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಹುಡುಕಲು ಸಿದ್ಧರಾಗಿದ್ದೀರಾ?",
+                home_cta_text: "ಇಂದೇ ನಿಮ್ಮ ಪರಾಮರ್ಶವನ್ನು ಬುಕ್ ಮಾಡಿ ಮತ್ತು ಪ್ರಾಚೀನ ವೈದಿಕ ಬುದ್ಧಿಮತ್ತೆಯೊಂದಿಗೆ ನಿಮ್ಮ ಮಾರ್ಗವನ್ನು ಪ್ರಕಾಶಿಸಿ",
+                home_cta_book: "ಪರಾಮರ್ಶವನ್ನು ಬುಕ್ ಮಾಡಿ",
+                home_cta_whatsapp: "ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಚಾಟ್ ಮಾಡಿ",
+                btn_book: "ಪರಂಪರಾಗತ ಪರಾಮರ್ಶವನ್ನು ಬುಕ್ ಮಾಡಿ",
+                btn_profile: "ಜ್ಯೋತಿಷಿಗಳ ಪ್ರೊಫೈಲ್ & ಸನ್ಮಾನಗಳು",
+                btn_experiences: "ಭಕ್ತರ ಅನುಭವಗಳು",
+                astrologer_badge: "ವೈದಿಕ ಜ್ಯೋತಿಷ ಸೇವೆಗೆ ಸನ್ಮಾನಿತ",
+                banner_text: "ವಿಶ್ವ ಬುದ್ಧಿಮತ್ತೆಯ ಮೂಲಕ ನಿಮ್ಮ ಮಾರ್ಗವನ್ನು ಪ್ರಕಾಶಿತ ಮಾಡಿ",
+                gallery_title: "ವರ್ಷಗಳಲ್ಲಿ ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ",
+                about_heading: "ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ ಬಗ್ಗೆ",
+                about_paragraph_1: "ವೈದಿಕ ಜ್ಯೋತಿಷದಲ್ಲಿ 30 ವರ್ಷಗಳಿಗಿಂತ ಹೆಚ್ಚು ಸಂಯೋಜಿತ ಕುಟುಂಬ ಪರಂಪರೆಯೊಂದಿಗೆ, ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ ಆಧುನಿಕ ಸಾಧಕಗಳಿಗೆ ಪ್ರಾಚೀನ ಬುದ್ಧಿಮತ್ತೆಯನ್ನು ತರುತ್ತಾನೆ.",
+                about_paragraph_2: "ಅವರ ನೈಪುಣ್ಯತೆ ಜಾತಕ ವಿಶ್ಲೇಷಣೆ, ಕುಂಡಲಿ ಹೊಂದಾಣಿಕೆ ಮಾರ್ಗದರ್ಶನ, ಮುಹೂರ್ತ ಗಣನೆಗಳು ಮತ್ತು ಪ್ರಶ್ನ ಪರಾಮರ್ಶವನ್ನು ಒಳಗೊಳ್ಳುತ್ತದೆ.",
+                about_paragraph_3: "ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ ಜ್ಯೋತಿಷ ಕೇವಲ ಭವಿಷ್ಯದ್ವಾಣಿ ಅಲ್ಲ, ಆತ್ಮ-ಸಚೇತನತೆ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ವಿಕಾಸದ ಸಾಧನ ಎಂದು ನಂಬುತ್ತಾನೆ.",
+                qualifications_heading: "ಅರ್ಹತೆಗಳು & ನೈಪುಣ್ಯತೆ",
+                qual_guru: "ವೈದಿಕ ಜ್ಯೋತಿಷದಲ್ಲಿ ಗುರುಕುಲ ತರಬೇತಿ",
+                qual_horoscope: "ಜಾತಕ ವಿಶ್ಲೇಷಣೆ & ಕುಂಡಲಿ ಓದುವಿಕೆ",
+                qual_muhurtham: "ಮುಹೂರ್ತ ಗಣನೆಗಳು",
+                qual_prashna: "ಪ್ರಶ್ನ ಪರಾಮರ್ಶ",
+                qual_pariharam: "ಪರಿಹಾರ & ಪರಿಹಾರ ಕ್ರಮಗಳು",
+                honours_heading: "ಸನ್ಮಾನಗಳು & ಮನ್ನಣೆ",
+                award_1: "ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಮನ್ನಣೆ (2023)",
+                award_2: "ವೈದಿಕ ಜ್ಯೋತಿಷ ಶ್ರೇಷ್ಠತೆ ಪುರಸ್ಕಾರ (2022)",
+                award_3: "ಧರ್ಮಿಕ ಕಲೆಯಲ್ಲಿ ಸಮುದಾಯ ಸೇವೆ (2021)",
+                award_4: "ಪರಂಪರಾಗತ ಜ್ಞಾನ ಧಾರಕ (2020)",
+                award_upload_note: "ಸೂಚನೆ: ಪುರಸ್ಕಾರ ಪ್ರಮಾಣಪತ್ರಗಳನ್ನು ಇಲ್ಲಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಬಹುದು",
+                testimonials_heading: "ಭಕ್ತರ ಅನುಭವಗಳು",
+                testimonials_intro: "ದೈವಿಕ ಮಾರ್ಗದರ್ಶನದಿಂದ ಮುಟ್ಟಿಕೊಂಡ ಕುಟುಂಬಗಳಿಂದ ಕೇಳಿ",
+                testimonial_1_text: "ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣನ ಮಾರ್ಗದರ್ಶನ ರೂಪಾಂತರಕ್ಕೆ ಹೋಗಿದೆ. ಅವರ ನಿಖಿಲ ಓದುವಿಕೆಗಳು ನನ್ನ ವಿವಾಹ ಚಿಂತೆಗಳಿಗೆ ಸ್ಪಷ್ಟತೆ ತಂದವು.",
+                testimonial_1_author: "— ಮೀರಾ ಶರ್ಮ, ಬೆಂಗಳೂರು",
+                testimonial_2_text: "ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣನನ್ನು ಭೇಟಿಯಾಗುವ ತನಕ ನಾನು ಜ್ಯೋತಿಷದ ಬಗ್ಗೆ ಆಕರ್ಷಕವಾಗಿದ್ದೆ. ಅವರ ಅನುಕಂಪೂರ್ಣ ವಿಧಾನ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಬುದ್ಧಿಮತ್ತೆ ಸಹಾಯ ಮಾಡಿದೆ.",
+                testimonial_2_author: "— ರಾಜೇಶ್ ಕುಮಾರ್, ಚೆನ್ನೈ",
+                testimonial_3_text: "ನನ್ನ ಮಗಳಿಗೆ ಕುಂಡಲಿ ಮಾರ್ಗದರ್ಶನವು ಒಳನೋಟ ಮತ್ತು ಸತ್ಯವಾಗಿತ್ತು.",
+                testimonial_3_author: "— ಲಕ್ಷ್ಮಿ ಐಯರ್, ಮೈಸೂರು",
+                booking_heading: "ಪರಾಮರ್ಶವನ್ನು ಬುಕ್ ಮಾಡಿ",
+                booking_timing_heading: "ಪರಾಮರ್ಶ ಲಭ್ಯತೆ",
+                booking_timing: "ಸೋಮವಾರದಿಂದ ಶುಕ್ರವಾರ — 9:00 AM ನಿಂದ 6:00 PM\nನಿಮ್ಮ ಬುಕ್ ಮಾಡಿದ ದಿನದಲ್ಲಿ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಭೇಟಿ",
+                booking_description: "ಈ ಪ್ರಪತ್ರದ ಮೂಲಕ ನಿಮ್ಮ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ. ಸಮರ್ಪಣೆಯ ನಂತರ, ನೀವು ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣನೊಂದಿಗೆ ನಿಮ್ಮ ಬುಕಿಂಗ್ ಅನ್ನು ದೃಢೀಕರಿಸಲು ವಾಟ್ಸಾಪ್ ಸಂದೇಶ ಪಡೆಯುವಿರಿ.",
+                form_name: "ಪೂರ್ಣ ಹೆಸರು",
+                form_gender: "ಲಿಂಗ",
+                gender_male: "ಪುರುಷ",
+                gender_female: "ಮಹಿಳೆ",
+                gender_others: "ಇತರ",
+                form_city: "ನಿಮ್ಮ ನಗರ",
+                form_dob: "ಜನ್ಮ ದಿನಾಂಕ (DD/MM/YYYY)",
+                form_tob: "ಜನ್ಮ ಸಮಯ",
+                form_cons_date: "ನೆಂದೆಯ ಪರಾಮರ್ಶ ದಿನಾಂಕ (DD/MM/YYYY)",
+                form_cons_type: "ಪರಾಮರ್ಶದ ಪ್ರಕಾರ (ಐಚ್ಛಿಕ)",
+                form_whatsapp: "ನಿಮ್ಮ ವಾಟ್ಸಾಪ್ ಸಂಖ್ಯೆ",
+                booking_form_note: "ಸೂಚನೆ: ಈ ಬುಕಿಂಗ್‌ನ ಭಾಗವಾಗಿ ಕುಂಡಲಿ / ಜಾತಕ ಹೊಂದಾಣಿಕೆ ನಿರ್ವಹಿಸಲಾಗುವುದಿಲ್ಲ.",
+                btn_submit: "ಸಮರ್ಪಣೆ ಮತ್ತು ವಾಟ್ಸಾಪ್‌ ಮೂಲಕ ಬುಕ್ ಮಾಡಿ",
+                contact_heading: "ಸಂಪರ್ಕಕ್ಕೆ ಪ್ರವೇಶಿಸು",
+                contact_description: "ಪರಾಮರ್ಶ ಮತ್ತು ವಿಚಾರಿಸುವಿಕೆಗಾಗಿ ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣನೊಂದಿಗೆ ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಸಂಪರ್ಕ ಮಾಡಿ.",
+                contact_city: "ಕಚೇರಿ ಸ್ಥಳ:",
+                contact_maps_note: "",
+                btn_whatsapp: "ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಚಾಟ್ ಮಾಡಿ",
+                footer_text: "© {year} ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ. | ಪರಂಪರಾಗತ ವೈದಿಕ ಜ್ಯೋತಿಷ & ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶನ"
+            }
+        };
+
+        // SET LANGUAGE FUNCTION
+        function setLanguage(lang) {
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update all text elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    let text = translations[lang][key];
+                    // Handle year placeholder
+                    text = text.replace('{year}', new Date().getFullYear());
+                    element.textContent = text;
+                }
+            });
+        }
+
+        // NAVIGATION FUNCTIONS
+        function navigateTo(pageId, event) {
+            if (event) event.preventDefault();
+
+            // Update URL hash without triggering hashchange event
+            if (window.location.hash !== '#' + pageId) {
+                window.location.hash = pageId;
+            } else {
+                // If hash is already set, manually trigger the page change
+                showPage(pageId);
+            }
+        }
+
+        // Function to show a specific page
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update navigation active state
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                // Check if this link points to the current page
+                const linkHref = link.getAttribute('onclick');
+                if (linkHref && linkHref.includes("'" + pageId + "'")) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Close mobile menu if open
+            const mobileMenu = document.querySelector('.main-nav');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            if (mobileMenu && mobileMenu.classList.contains('mobile-open')) {
+                mobileMenu.classList.remove('mobile-open');
+                menuToggle.classList.remove('active');
+            }
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', function () {
+            const hash = window.location.hash.substring(1); // Remove the '#'
+            const pageId = hash || 'home-page'; // Default to home if no hash
+            showPage(pageId);
+        });
+
+        // MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const nav = document.querySelector('.main-nav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            nav.classList.toggle('mobile-open');
+            toggle.classList.toggle('active');
+        }
+
+        // SCROLL TO SECTION (legacy support)
+        function scrollToSection(selector) {
+            const section = document.querySelector(selector);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // CONVERT DATE INPUT TO DD/MM/YYYY FORMAT
+        function convertToIndianFormat(dateInputValue) {
+            if (!dateInputValue) return '';
+            const dateObj = new Date(dateInputValue);
+            const day = String(dateObj.getDate()).padStart(2, '0');
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const year = dateObj.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        // NORMALIZE WHATSAPP NUMBER
+        function normalizeWhatsAppNumber(number) {
+            // Remove all non-digit characters
+            let cleaned = number.replace(/\D/g, '');
+
+            // If starts with 91, keep as is
+            if (cleaned.startsWith('91') && cleaned.length === 12) {
+                return '+' + cleaned;
+            }
+
+            // If 10 digits, add +91
+            if (cleaned.length === 10) {
+                return '+91' + cleaned;
+            }
+
+            // If already has +, return as is
+            if (number.startsWith('+')) {
+                return number;
+            }
+
+            return null; // Invalid format
+        }
+
+        // BOOKING FORM SUBMIT
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const city = document.getElementById('city').value.trim();
+            const dobRaw = document.getElementById('dob').value;
+            const dob = convertToIndianFormat(dobRaw);
+            const tob = document.getElementById('tob').value;
+            const consultationDateRaw = document.getElementById('consultationDate').value;
+            const consultationDate = convertToIndianFormat(consultationDateRaw);
+            const consultationType = document.getElementById('consultationType').value.trim() || "Not specified";
+            const whatsappNumber = document.getElementById('whatsappNumber').value.trim();
+
+            // Validate dates are selected
+            if (!dobRaw) {
+                document.getElementById('dobError').classList.add('show');
+                document.getElementById('dob').focus();
+                return;
+            }
+
+            if (!consultationDateRaw) {
+                document.getElementById('consDateError').classList.add('show');
+                document.getElementById('consultationDate').focus();
+                return;
+            }
+
+            // Validate and normalize WhatsApp number
+            const normalizedNumber = normalizeWhatsAppNumber(whatsappNumber);
+            if (!normalizedNumber) {
+                document.getElementById('whatsappError').classList.add('show');
+                document.getElementById('whatsappNumber').focus();
+                return;
+            }
+
+            // Create WhatsApp message
+            const message = `Hello Sri Ramesh Krishna,
+
+I would like to book a consultation with you.
+
+*My Details:*
+*Name:* ${fullName}
+*Gender:* ${gender}
+*City:* ${city}
+*Date of Birth:* ${dob}
+*Time of Birth:* ${tob}
+*Preferred Consultation Date:* ${consultationDate}
+*Type of Consultation:* ${consultationType}
+*My WhatsApp Number:* ${normalizedNumber}
+
+*I understand timings are Mon–Fri, 9 AM – 6 PM.*
+
+*Thank you!*`;
+
+            // Open WhatsApp with message
+            const whatsappUrl = `https://wa.me/919663406667?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // INITIALIZE ON PAGE LOAD
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Initialize page based on URL hash
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showPage(hash);
+            } else {
+                // Default to home page
+                showPage('home-page');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
