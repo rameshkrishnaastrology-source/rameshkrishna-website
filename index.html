@@ -2132,7 +2132,10 @@
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Scroll to top immediately and smoothly after a brief delay to ensure content is rendered
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 10);
             }
 
             // Update navigation active state
@@ -2275,6 +2278,9 @@ I would like to book a consultation with you.
 
         // INITIALIZE ON PAGE LOAD
         document.addEventListener('DOMContentLoaded', function () {
+            // Immediately scroll to top to prevent loading at bottom
+            window.scrollTo(0, 0);
+
             // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
 
