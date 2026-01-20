@@ -9,11 +9,41 @@
     <meta name="description"
         content="Traditional Vedic Astrology consultation with Sri Ramesh Krishna. 15+ years experience in horoscope reading, Kundli matching, Muhurtham calculations and spiritual guidance.">
 
+    <!-- Immediate scroll to top before page renders -->
+    <script>
+        // This runs immediately, before any content is rendered
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-anchor: none;
+            /* Prevent scrolling during initial load */
+            overflow: hidden;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            overflow-anchor: none;
+            /* Prevent ANY scrolling during initial load */
+            overflow-y: hidden;
+        }
+
+        /* This class will be added by JavaScript after scroll position is secured */
+        html.scroll-ready,
+        html.scroll-ready body {
+            overflow-y: auto !important;
         }
 
         :root {
@@ -36,7 +66,6 @@
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--light-grey);
-            overflow-x: hidden;
         }
 
         /* HEADER SECTION */
@@ -922,7 +951,7 @@
     </style>
 </head>
 
-<body>
+<body onload="window.scrollTo(0, 0);">
 
     <!-- HEADER -->
     <header>
@@ -2278,11 +2307,11 @@ I would like to book a consultation with you.
 
         // INITIALIZE ON PAGE LOAD
         document.addEventListener('DOMContentLoaded', function () {
-            // Immediately scroll to top to prevent loading at bottom
-            window.scrollTo(0, 0);
-
-            // Set current year in footer
-            document.getElementById('year').textContent = new Date().getFullYear();
+            // Set current year in footer FIRST (this may cause scroll)
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
 
             // Initialize page based on URL hash
             const hash = window.location.hash.substring(1);
@@ -2290,8 +2319,52 @@ I would like to book a consultation with you.
                 showPage(hash);
             } else {
                 // Default to home page
-                showPage('home-page');
+                showPage('home');
             }
+
+            // NOW aggressively scroll to top AFTER all DOM operations
+            window.scrollTo(0, 0);
+
+            // Use requestAnimationFrame to ensure scroll happens after rendering
+            requestAnimationFrame(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            });
+
+            // Multiple safety scrolls with increasing delays to override any browser behavior
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }, 0);
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }, 10);
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }, 50);
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }, 100);
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+
+                // Finally, re-enable scrolling after position is secured
+                document.documentElement.classList.add('scroll-ready');
+            }, 200);
         });
     </script>
 
