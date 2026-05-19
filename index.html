@@ -1639,7 +1639,7 @@
                 consultations and enquiries.</p>
             <div class="contact-city">
                 <span data-i18n="contact_city">Office Location:</span>
-                <span class="contact-city-name">Arishinakunte, Bengaluru</span>
+                <span class="contact-city-name" data-i18n="contact_city_name">Arishinakunte, Bengaluru</span>
             </div>
             <p class="contact-note" data-i18n="contact_maps_note"></p>
             <a href="https://wa.me/919663406667" target="_blank" class="whatsapp-btn" rel="noopener noreferrer">
@@ -1743,7 +1743,7 @@
             and enquiries.</p>
         <div class="contact-city">
             <span data-i18n="contact_city">Office Location:</span>
-            <span class="contact-city-name">Arishinakunte, Bengaluru <br> ಅರಿಶಿನಕುಂಟೆ, ಬೆಂಗಳೂರು </span>
+            <span class="contact-city-name" data-i18n="contact_city_name">Arishinakunte, Bengaluru<br>ಅರಿಶಿನಕುಂಟೆ, ಬೆಂಗಳೂರು</span>
         </div>
         <p class="contact-note" data-i18n="contact_maps_note"></p>
         <a href="https://wa.me/919663406667" target="_blank" class="whatsapp-btn" rel="noopener noreferrer">
@@ -1903,6 +1903,7 @@
                 contact_heading: "Get In Touch",
                 contact_description: "Connect with Sri Ramesh Krishna directly through WhatsApp for consultations and enquiries.",
                 contact_city: "Office Location:",
+                contact_city_name: "Arishinakunte, Bengaluru",
                 contact_maps_note: "",
                 btn_whatsapp: "Chat on WhatsApp",
                 footer_text: "© {year} Sri Ramesh Krishna. All rights reserved. | Traditional Vedic Astrology & Spiritual Guidance"
@@ -2054,6 +2055,7 @@
                 contact_heading: "தொடர்பு கொள்ளுங்கள்",
                 contact_description: "ஆலோசனைகள் மற்றும் விசாரணைகளுக்கு ஸ்ரீ ரமேஷ் கிருஷ்ணனுடன் WhatsApp மூலம் நேரடியாக இணைந்துகொள்ளுங்கள்.",
                 contact_city: "அலுவலக இடம்:",
+                contact_city_name: "அரிஷினகுண்டே, பெங்களுரு",
                 contact_maps_note: "",
                 btn_whatsapp: "WhatsApp இல் உரையாடு",
                 footer_text: "© {year} ஸ்ரீ ரமேஷ் கிருஷ்ணன். அனைத்து உரிமைகளும் Launch Quests க்கு ஒதுக்கப்பட்டுள்ளது பாதுகாக்கப்பட்டவ. | பாரம்பரிய வேதிய ஜ்யோதிஷம் மற்றும் ஆன்மீக வழிகாட்டுதல்"
@@ -2205,7 +2207,8 @@
                 btn_submit: "ಸಮರ್ಪಣೆ ಮತ್ತು ವಾಟ್ಸಾಪ್‌ ಮೂಲಕ ಬುಕ್ ಮಾಡಿ",
                 contact_heading: "ಸಂಪರ್ಕಿಸಲು / / ಭೇಟಿಯಾಗಲು",
                 contact_description: "ಸಮಾಲೋಚನೆಗಳು ಮತ್ತು ವಿಚಾರಿಸುವಿಕೆಗಾಗಿ ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ ಅವರನ್ನು ನೇರವಾಗಿ ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಸಂಪರ್ಕಿಸಿ.",
-                contact_city: "ಕಚೇರಿ ಸ್ಥಳ: ಅರಿಶಿನಕುಂಟೆ, ಬೆಂಗಳೂರು",
+                contact_city: "ಕಚೇರಿ ಸ್ಥಳ:",
+                contact_city_name: "ಅರಿಶಿನಕುಂಟೆ, ಬೆಂಗಳೂರು",
                 contact_maps_note: "",
                 btn_whatsapp: "ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಚಾಟ್ ಮಾಡಿ",
                 footer_text: "© {year} ಶ್ರೀ ರಮೇಶ್ ಕೃಷ್ಣ. ಅನ್ವೇಷಣೆಗಳನ್ನು ಪ್ರಾರಂಭಿಸಲು ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ 🚀. | ಸಾಂಪ್ರದಾಯಿಕ ವೈದಿಕ ಜ್ಯೋತಿಷ್ಯ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶನ"
@@ -2225,7 +2228,12 @@
                     let text = translations[lang][key];
                     // Handle year placeholder
                     text = text.replace('{year}', new Date().getFullYear());
-                    element.textContent = text;
+                    const usesHtml = /<[^>]+>/.test(text);
+                    if (usesHtml) {
+                        element.innerHTML = text;
+                    } else {
+                        element.textContent = text;
+                    }
                 }
             });
         }
