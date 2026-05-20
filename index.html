@@ -1759,6 +1759,52 @@
     </footer>
 
     <script>
+        // ============================================
+        // CENTRALIZED STATE MANAGEMENT SYSTEM
+        // ============================================
+        const AppState = {
+            // Default language
+            DEFAULT_LANGUAGE: 'en',
+            STORAGE_KEY: 'ramesh_krishna_language',
+            
+            // Current state
+            currentLanguage: 'en',
+            
+            // Initialize state from localStorage
+            initialize() {
+                const saved = localStorage.getItem(this.STORAGE_KEY);
+                this.currentLanguage = saved || this.DEFAULT_LANGUAGE;
+                return this.currentLanguage;
+            },
+            
+            // Set language and persist
+            setLanguage(lang) {
+                if (lang === 'en' || lang === 'ta' || lang === 'kn') {
+                    this.currentLanguage = lang;
+                    localStorage.setItem(this.STORAGE_KEY, lang);
+                    return true;
+                }
+                return false;
+            },
+            
+            // Get current language
+            getLanguage() {
+                return this.currentLanguage;
+            },
+            
+            // Clear all stale translations (force fresh update)
+            clearStaleTranslations() {
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    // Store original fallback text if needed
+                    if (!element.dataset.fallback) {
+                        element.dataset.fallback = element.textContent;
+                    }
+                    // Clear to force fresh update
+                    element.textContent = '';
+                });
+            }
+        };
+
         // TRANSLATIONS OBJECT
         const translations = {
             en: {
@@ -1767,7 +1813,7 @@
                 hero_heading: "Seek Divine Guidance with Sri Ramesh Krishna",
                 hero_subheading: "Traditional South Indian Vedic Astrology rooted in ancient wisdom. Gain clarity on life's path through authentic astrological guidance and spiritual counselling.",
                 tag_experience: "30+ Years Combined Experience",
-                tag_languages: "English • Tamil • Kannada",
+                tag_languages: "Tamil • Kannada",
                 tag_consultations: "Personal Consultations",
                 home_services_heading: "Our Sacred Services",
                 home_services_intro: "Comprehensive astrological guidance rooted in ancient Vedic wisdom",
@@ -1807,7 +1853,7 @@
                 nav_about: "About",
                 nav_services: "Services",
                 nav_horoscopes: "Horoscopes",
-                nav_birthchart: "Birth Chart",
+                nav_birthchart: "Book Now",
                 nav_testimonials: "Testimonials",
                 nav_gallery: "Gallery",
                 nav_contact: "Contact",
@@ -1973,7 +2019,7 @@
                 hero_heading: "ஸ்ரீ ரமேஷ் கிருஷ்ணனுடன் தெய்வ வழிகாட்டுதலை பெறுங்கள்",
                 hero_subheading: "பண்டைய ஞானத்தில் வேரூன்றிய பாரம்பரிய தென் இந்திய வேதிய ஜ்யோதிஷம். உண்மையான ஜ்யோதிஷ வழிகாட்டுதல் மற்றும் ஆன்மீக ஆலோசனார் மூலம் உங்கள் வாழ்க்கையின் பாதையில் தெளிவு பெறுங்கள்.",
                 tag_experience: "30+ ஆண்டுகள் ஒருங்கிணைந்த அனுபவம்",
-                tag_languages: "ஆங்கிலம் • தமிழ் • கன்னடம்",
+                tag_languages: "தமிழ் • கன்னடம்",
                 tag_consultations: "தனிப்பட்ட ஆலோசனைகள்",
                 home_services_heading: "எங்கள் புனித சேவைகள்",
                 home_services_intro: "பண்டைய வேதிய ஞானத்தில் வேரூன்றிய விரிவான ஜ்யோதிஷ வழிகாட்டுதல்",
@@ -2215,13 +2261,36 @@
             }
         };
 
-        // SET LANGUAGE FUNCTION
+        // ============================================
+        // SET LANGUAGE FUNCTION - With State Management
+        // ============================================
         function setLanguage(lang) {
-            // Update language buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Update all text elements with data-i18n attribute
+            // Validate language
+            if (!['en', 'ta', 'kn'].includes(lang)) {
+                console.error('Invalid language:', lang);
+                return;
+            }
+            
+            // Update centralized state
+            AppState.setLanguage(lang);
+            
+            // Clear stale translations first
+            AppState.clearStaleTranslations();
+            
+            // Update language buttons with proper state tracking
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Set the correct active button based on lang parameter
+            const langToButton = { 'en': 0, 'ta': 1, 'kn': 2 };
+            const buttonIndex = langToButton[lang];
+            const buttons = document.querySelectorAll('.lang-btn');
+            if (buttons[buttonIndex]) {
+                buttons[buttonIndex].classList.add('active');
+            }
+            
+            // Update all elements with data-i18n attribute
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
@@ -2234,11 +2303,22 @@
                     } else {
                         element.textContent = text;
                     }
+                } else {
+                    // Fallback to stored fallback text or empty
+                    element.textContent = element.dataset.fallback || '';
                 }
             });
+            
+            // Force page re-render by triggering a re-paint
+            document.documentElement.style.display = 'none';
+            setTimeout(() => {
+                document.documentElement.style.display = 'block';
+            }, 0);
         }
 
-        // NAVIGATION FUNCTIONS
+        // ============================================
+        // NAVIGATION FUNCTIONS - With State Management
+        // ============================================
         function navigateTo(pageId, event) {
             if (event) event.preventDefault();
 
@@ -2262,7 +2342,27 @@
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
-                // Scroll to top immediately and smoothly after a brief delay to ensure content is rendered
+                
+                // Reapply current language after page change to fix stale translations
+                const currentLang = AppState.getLanguage();
+                setTimeout(() => {
+                    // Clear and re-apply translations for this page
+                    targetPage.querySelectorAll('[data-i18n]').forEach(element => {
+                        const key = element.getAttribute('data-i18n');
+                        if (translations[currentLang] && translations[currentLang][key]) {
+                            let text = translations[currentLang][key];
+                            text = text.replace('{year}', new Date().getFullYear());
+                            const usesHtml = /<[^>]+>/.test(text);
+                            if (usesHtml) {
+                                element.innerHTML = text;
+                            } else {
+                                element.textContent = text;
+                            }
+                        }
+                    });
+                }, 0);
+                
+                // Scroll to top
                 setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 10);
@@ -2287,11 +2387,14 @@
             }
         }
 
-        // Handle browser back/forward buttons
+        // Handle browser back/forward buttons with state preservation
         window.addEventListener('hashchange', function () {
             const hash = window.location.hash.substring(1); // Remove the '#'
-            const pageId = hash || 'home-page'; // Default to home if no hash
+            const pageId = hash || 'home'; // Default to home if no hash
             showPage(pageId);
+            
+            // Reapply current language after navigation
+            setLanguage(AppState.getLanguage());
         });
 
         // MOBILE MENU TOGGLE
@@ -2408,7 +2511,10 @@ I would like to book a consultation with you.
 
         // INITIALIZE ON PAGE LOAD
         document.addEventListener('DOMContentLoaded', function () {
-            // Set current year in footer FIRST (this may cause scroll)
+            // Initialize state management FIRST
+            const savedLanguage = AppState.initialize();
+            
+            // Set current year in footer
             const yearElement = document.getElementById('year');
             if (yearElement) {
                 yearElement.textContent = new Date().getFullYear();
@@ -2416,16 +2522,17 @@ I would like to book a consultation with you.
 
             // Initialize page based on URL hash
             const hash = window.location.hash.substring(1);
-            if (hash) {
-                showPage(hash);
-            } else {
-                // Default to home page
-                showPage('home');
-            }
-
-            // NOW aggressively scroll to top AFTER all DOM operations
+            const pageId = hash || 'home';
+            
+            // Show the page
+            showPage(pageId);
+            
+            // Apply saved language (this ensures state is consistent)
+            setLanguage(savedLanguage);
+            
+            // Scroll to top aggressively
             window.scrollTo(0, 0);
-
+            
             // Use requestAnimationFrame to ensure scroll happens after rendering
             requestAnimationFrame(() => {
                 window.scrollTo(0, 0);
@@ -2433,7 +2540,7 @@ I would like to book a consultation with you.
                 document.body.scrollTop = 0;
             });
 
-            // Multiple safety scrolls with increasing delays to override any browser behavior
+            // Multiple safety scrolls with increasing delays
             setTimeout(() => {
                 window.scrollTo(0, 0);
                 document.documentElement.scrollTop = 0;
@@ -2462,10 +2569,22 @@ I would like to book a consultation with you.
                 window.scrollTo(0, 0);
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
-
-                // Finally, re-enable scrolling after position is secured
                 document.documentElement.classList.add('scroll-ready');
             }, 200);
+        });
+        
+        // Re-apply language on visibility change (handles browser tab switching)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                setLanguage(AppState.getLanguage());
+            }
+        });
+        
+        // Re-apply language when returning from history
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                setLanguage(AppState.getLanguage());
+            }
         });
     </script>
 
