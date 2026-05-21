@@ -413,38 +413,51 @@
 
         .photo-gallery-slider {
             position: relative;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
             background: transparent;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            cursor: grab;
+            scroll-behavior: smooth;
+        }
+
+        .photo-gallery-slider:active {
+            cursor: grabbing;
+        }
+
+        /* Hide scrollbar but keep scrolling functional */
+        .photo-gallery-slider::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .photo-gallery-slider::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .photo-gallery-slider::-webkit-scrollbar-thumb {
+            background: rgba(139, 26, 26, 0.3);
+            border-radius: 3px;
+        }
+
+        .photo-gallery-slider::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 26, 26, 0.6);
         }
 
         .gallery-container {
             display: flex;
-            animation: slideInfinite 30s linear infinite;
-        }
-
-        .gallery-container:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes slideInfinite {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
+            gap: 20px;
+            padding: 20px;
         }
 
         .gallery-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 10px;
+            margin: 0;
             flex-shrink: 0;
             background: transparent;
+            user-select: none;
         }
 
         .gallery-item img {
@@ -452,6 +465,8 @@
             height: 300px;
             object-fit: contain;
             border-radius: 8px;
+            pointer-events: none;
+            cursor: grab;
         }
 
         /* ABOUT SECTION */
@@ -2591,6 +2606,43 @@ I would like to book a consultation with you.
         window.addEventListener('pageshow', function(event) {
             if (event.persisted) {
                 setLanguage(AppState.getLanguage());
+            }
+        });
+
+        // ============================================
+        // GALLERY DRAG/SCROLL FUNCTIONALITY
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallerySlider = document.querySelector('.photo-gallery-slider');
+            if (gallerySlider) {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                gallerySlider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    startX = e.pageX - gallerySlider.offsetLeft;
+                    scrollLeft = gallerySlider.scrollLeft;
+                    gallerySlider.style.cursor = 'grabbing';
+                });
+
+                gallerySlider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    gallerySlider.style.cursor = 'grab';
+                });
+
+                gallerySlider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    gallerySlider.style.cursor = 'grab';
+                });
+
+                gallerySlider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - gallerySlider.offsetLeft;
+                    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+                    gallerySlider.scrollLeft = scrollLeft - walk;
+                });
             }
         });
     </script>
